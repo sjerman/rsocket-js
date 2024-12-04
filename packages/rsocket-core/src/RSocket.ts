@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Closeable } from "./Common";
+import { Closeable } from "./Common.js";
 
 /**
  * A single unit of data exchanged between the peers of a `RSocket`.

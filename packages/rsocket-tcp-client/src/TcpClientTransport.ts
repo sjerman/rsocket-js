@@ -25,7 +25,7 @@ import {
   Outbound,
 } from "rsocket-core";
 import net, { SocketConnectOpts } from "net";
-import { TcpDuplexConnection } from "./TcpDuplexConnection";
+import { TcpDuplexConnection } from "./TcpDuplexConnection.js";
 
 type TcpSocketCreator = (
   options: SocketConnectOpts,

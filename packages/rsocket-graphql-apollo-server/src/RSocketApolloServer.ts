@@ -16,7 +16,7 @@ import { Headers, Request } from "apollo-server-env";
 import { Config } from "apollo-server-core/src/types";
 import { GraphQLSchema, parse, subscribe } from "graphql";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { isAsyncGenerator, parsePayloadForQuery } from "./utilities";
+import { isAsyncGenerator, parsePayloadForQuery } from "./utilities.js";
 import { defer, from, Observable, of, switchMap } from "rxjs";
 import { ExecutionResult } from "graphql/execution/execute";
 

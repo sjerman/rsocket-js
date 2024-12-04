@@ -16,4 +16,5 @@
 
 "use strict";
 
-export * from "./WebsocketServerTransport";
+export * from "./WebsocketServerTransport.js";
+export * from "./WebsocketDuplexConnection.js";

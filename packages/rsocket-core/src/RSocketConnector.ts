@@ -20,9 +20,9 @@ import {
   ResumableClientServerInputMultiplexerDemultiplexer,
   ResumeOkAwaitingResumableClientServerInputMultiplexerDemultiplexer,
   StreamIdGenerator,
-} from "./ClientServerMultiplexerDemultiplexer";
-import { Flags, FrameTypes, SetupFrame } from "./Frames";
-import { Payload, RSocket } from "./RSocket";
+} from "./ClientServerMultiplexerDemultiplexer.js";
+import { Flags, FrameTypes, SetupFrame } from "./Frames.js";
+import { Payload, RSocket } from "./RSocket.js";
 import {
   DefaultConnectionFrameHandler,
   DefaultStreamRequestHandler,
@@ -30,9 +30,9 @@ import {
   KeepAliveSender,
   LeaseHandler,
   RSocketRequester,
-} from "./RSocketSupport";
-import { ClientTransport } from "./Transport";
-import { FrameStore } from "./Resume";
+} from "./RSocketSupport.js";
+import { ClientTransport } from "./Transport.js";
+import { FrameStore } from "./Resume.js";
 
 export type ConnectorConfig = {
   setup?: {

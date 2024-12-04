@@ -6,7 +6,7 @@ import {
   RequestFnfResponderStream,
 } from "../src/RequestFnFStream";
 import { Cancellable, OnTerminalSubscriber, Payload } from "../src/RSocket";
-import { MockStream } from "./test-utils/MockStream";
+import { MockStream } from "./test-utils/MockStream.js";
 
 describe("RequestFnFStream Test", () => {
   describe("Requester", () => {

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-export * from "./CompositeMetadata";
-export * from "./WellKnownMimeType";
-export * from "./AuthMetadata";
-export * from "./RoutingMetadata";
-export * from "./WellKnownAuthType";
+export * from "./CompositeMetadata.js";
+export * from "./WellKnownMimeType.js";
+export * from "./AuthMetadata.js";
+export * from "./RoutingMetadata.js";
+export * from "./WellKnownAuthType.js";

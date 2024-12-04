@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-import { ErrorCodes, ExtFrame, RSocketError } from ".";
-import { sizeOfFrame } from "./Codecs";
+import { ErrorCodes, RSocketError } from "./Errors.js";
+import { ExtFrame } from "./Frames.js";
+import { sizeOfFrame } from "./Codecs.js";
 import {
   CancelFrame,
   ErrorFrame,
@@ -26,7 +27,7 @@ import {
   RequestNFrame,
   RequestResponseFrame,
   RequestStreamFrame,
-} from "./Frames";
+} from "./Frames.js";
 
 export class FrameStore {
   private readonly storedFrames: Array<

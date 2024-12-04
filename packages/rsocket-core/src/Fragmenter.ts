@@ -23,8 +23,8 @@ import {
   RequestFnfFrame,
   RequestResponseFrame,
   RequestStreamFrame,
-} from "./Frames";
-import { Payload } from "./RSocket";
+} from "./Frames.js";
+import { Payload } from "./RSocket.js";
 
 export function isFragmentable(
   payload: Payload,

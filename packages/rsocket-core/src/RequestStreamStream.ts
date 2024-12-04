@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 
-import { ErrorCodes, RSocketError } from "./Errors";
-import { fragment, fragmentWithRequestN, isFragmentable } from "./Fragmenter";
+import { ErrorCodes, RSocketError } from "./Errors.js";
+import {
+  fragment,
+  fragmentWithRequestN,
+  isFragmentable,
+} from "./Fragmenter.js";
 import {
   CancelFrame,
   ErrorFrame,
@@ -25,9 +29,9 @@ import {
   PayloadFrame,
   RequestNFrame,
   RequestStreamFrame,
-} from "./Frames";
-import { LeaseManager } from "./Lease";
-import * as Reassembler from "./Reassembler";
+} from "./Frames.js";
+import { LeaseManager } from "./Lease.js";
+import * as Reassembler from "./Reassembler.js";
 import {
   Cancellable,
   OnExtensionSubscriber,
@@ -35,12 +39,12 @@ import {
   OnTerminalSubscriber,
   Payload,
   Requestable,
-} from "./RSocket";
+} from "./RSocket.js";
 import {
   Stream,
   StreamFrameHandler,
   StreamLifecycleHandler,
-} from "./Transport";
+} from "./Transport.js";
 
 export class RequestStreamRequesterStream
   implements

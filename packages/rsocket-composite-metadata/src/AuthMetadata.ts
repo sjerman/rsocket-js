@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { WellKnownAuthType } from "./WellKnownAuthType";
+import { WellKnownAuthType } from "./WellKnownAuthType.js";
 
 const authTypeIdBytesLength = 1;
 const customAuthTypeBytesLength = 1;

@@ -26,7 +26,7 @@ import {
   ServerTransport,
 } from "rsocket-core";
 import net from "net";
-import { TcpDuplexConnection } from "./TcpDuplexConnection";
+import { TcpDuplexConnection } from "./TcpDuplexConnection.js";
 
 type TcpServerCreator = (options: net.ServerOpts) => net.Server;
 

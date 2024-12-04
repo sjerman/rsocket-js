@@ -24,6 +24,7 @@
     "rsocket-core": "1.1.0"
   },
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "@types/ws": "^8.5.13"
   }
 }

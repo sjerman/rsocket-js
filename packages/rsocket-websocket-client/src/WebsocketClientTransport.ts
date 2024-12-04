@@ -25,7 +25,7 @@ import {
   Outbound,
 } from "rsocket-core";
 
-import { WebsocketDuplexConnection } from "./WebsocketDuplexConnection";
+import { WebsocketDuplexConnection } from "./WebsocketDuplexConnection.js";
 
 export type ClientOptions = {
   url: string;

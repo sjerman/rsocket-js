@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { StreamFrameHandler, StreamLifecycleHandler } from "./Transport";
+import { StreamFrameHandler, StreamLifecycleHandler } from "./Transport.js";
 
 export interface LeaseManager {
   requestLease(handler: StreamFrameHandler & StreamLifecycleHandler): void;

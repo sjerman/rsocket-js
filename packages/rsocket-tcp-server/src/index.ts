@@ -16,4 +16,4 @@
 
 "use strict";
 
-export * from "./TcpServerTransport";
+export * from "./TcpServerTransport.js";

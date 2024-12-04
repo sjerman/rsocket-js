@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-export * from "./Codecs";
+export * from "./Codecs.js";
 
-export * from "./Common";
-export * from "./Deferred";
-export * from "./Errors";
-export * from "./Frames";
+export * from "./Common.js";
+export * from "./Deferred.js";
+export * from "./Errors.js";
+export * from "./Frames.js";
 
-export * from "./RSocket";
-export * from "./RSocketConnector";
-export * from "./RSocketServer";
-export * from "./Transport";
+export * from "./RSocket.js";
+export * from "./RSocketConnector.js";
+export * from "./RSocketServer.js";
+export * from "./Transport.js";

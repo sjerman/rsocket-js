@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Availability, Closeable } from "./Common";
+import { Availability, Closeable } from "./Common.js";
 import {
   CancelFrame,
   ErrorFrame,
@@ -33,7 +33,7 @@ import {
   ResumeFrame,
   ResumeOkFrame,
   SetupFrame,
-} from "./Frames";
+} from "./Frames.js";
 
 export interface Outbound {
   /**

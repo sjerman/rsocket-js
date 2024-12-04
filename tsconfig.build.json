@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "moduleResolution": "bundler",
-    "module": "ES2020",
-    "target": "ES2020",
+    // "incremental": true,
+    "moduleResolution": "node",
+    "module": "ES6",
+    "target": "ES6",
     "sourceMap": true,
     "noEmitOnError": true,
     "esModuleInterop": true,
     "declaration": true,
     "downlevelIteration": true,
     // "resolveJsonModule": true,
-    "skipLibCheck": true,
+    // "skipLibCheck": true,
 
     "composite": true,
 

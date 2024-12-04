@@ -39,9 +39,9 @@ import {
   Subject,
   take,
 } from "rxjs";
-import Observer2BufferingSubscriberToPublisher2PrefetchingObservable from "./Observer2BufferingSubscriberToPublisher2PrefetchingObservable";
-import RSocketPublisherToObservable from "./RSocketPublisherToObservable";
-import RSocketPublisherToPrefetchingObservable from "./RSocketPublisherToPrefetchingObservable";
+import Observer2BufferingSubscriberToPublisher2PrefetchingObservable from "./Observer2BufferingSubscriberToPublisher2PrefetchingObservable.js";
+import RSocketPublisherToObservable from "./RSocketPublisherToObservable.js";
+import RSocketPublisherToPrefetchingObservable from "./RSocketPublisherToPrefetchingObservable.js";
 
 export function fireAndForget<TData>(
   data: TData,

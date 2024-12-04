@@ -19,5 +19,8 @@
     "clean": "../../node_modules/.bin/rimraf node_modules dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "../../node_modules/.bin/eslint src/**/**.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1"
   }
 }

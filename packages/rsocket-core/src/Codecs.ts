@@ -34,7 +34,7 @@ import {
   ResumeFrame,
   ResumeOkFrame,
   SetupFrame,
-} from "./Frames";
+} from "./Frames.js";
 
 export const FLAGS_MASK = 0x3ff; // low 10 bits
 export const FRAME_TYPE_OFFSET = 10; // frame type is offset 10 bytes within the uint16 containing type + flags

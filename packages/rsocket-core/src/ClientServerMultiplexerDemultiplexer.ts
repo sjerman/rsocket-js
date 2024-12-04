@@ -15,11 +15,17 @@
  */
 
 // import { ErrorCodes, Flags, FrameTypes, ResumeFrame, ResumeOkFrame } from ".";
-import { Closeable } from "./Common";
-import { Deferred } from "./Deferred";
-import { ErrorCodes, RSocketError } from "./Errors";
-import { Flags, Frame, FrameTypes, ResumeFrame, ResumeOkFrame } from "./Frames";
-import { FrameStore } from "./Resume";
+import { Closeable } from "./Common.js";
+import { Deferred } from "./Deferred.js";
+import { ErrorCodes, RSocketError } from "./Errors.js";
+import {
+  Flags,
+  Frame,
+  FrameTypes,
+  ResumeFrame,
+  ResumeOkFrame,
+} from "./Frames.js";
+import { FrameStore } from "./Resume.js";
 import {
   ConnectionFrameHandler,
   Demultiplexer,
@@ -30,7 +36,7 @@ import {
   StreamFrameHandler,
   StreamLifecycleHandler,
   StreamRequestHandler,
-} from "./Transport";
+} from "./Transport.js";
 
 export interface StreamIdGenerator {
   next(handler: (nextId: number) => boolean, streams: Array<number>): void;

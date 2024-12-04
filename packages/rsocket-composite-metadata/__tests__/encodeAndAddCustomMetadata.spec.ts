@@ -1,5 +1,5 @@
 import { encodeAndAddCustomMetadata } from "rsocket-composite-metadata";
-import { hex } from "./test-utils/hex";
+import { hex } from "./test-utils/hex.js";
 
 describe("encodeAndAddCustomMetadata", () => {
   it("throws if custom mimtype length is less than 1", () => {

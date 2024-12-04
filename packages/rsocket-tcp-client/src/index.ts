@@ -16,4 +16,4 @@
 
 "use strict";
 
-export * from "./TcpClientTransport";
+export * from "./TcpClientTransport.js";

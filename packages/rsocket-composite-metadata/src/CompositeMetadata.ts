@@ -15,7 +15,7 @@
  */
 
 import { readUInt24BE, writeUInt24BE } from "rsocket-core";
-import { WellKnownMimeType } from "./WellKnownMimeType";
+import { WellKnownMimeType } from "./WellKnownMimeType.js";
 
 export class CompositeMetadata implements Iterable<Entry> {
   _buffer: Buffer;

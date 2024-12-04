@@ -18,11 +18,11 @@ import {
   ClientServerInputMultiplexerDemultiplexer,
   ResumableClientServerInputMultiplexerDemultiplexer,
   StreamIdGenerator,
-} from "./ClientServerMultiplexerDemultiplexer";
-import { Closeable } from "./Common";
-import { ErrorCodes, RSocketError } from "./Errors";
-import { Flags, FrameTypes } from "./Frames";
-import { SocketAcceptor } from "./RSocket";
+} from "./ClientServerMultiplexerDemultiplexer.js";
+import { Closeable } from "./Common.js";
+import { ErrorCodes, RSocketError } from "./Errors.js";
+import { Flags, FrameTypes } from "./Frames.js";
+import { SocketAcceptor } from "./RSocket.js";
 import {
   DefaultConnectionFrameHandler,
   DefaultStreamRequestHandler,
@@ -30,9 +30,9 @@ import {
   KeepAliveSender,
   LeaseHandler,
   RSocketRequester,
-} from "./RSocketSupport";
-import { ServerTransport } from "./Transport";
-import { FrameStore } from "./Resume";
+} from "./RSocketSupport.js";
+import { ServerTransport } from "./Transport.js";
+import { FrameStore } from "./Resume.js";
 
 export type ServerConfig = {
   transport: ServerTransport;

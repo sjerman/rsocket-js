@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { ErrorCodes, RSocketError } from "./Errors";
-import { fragment, isFragmentable } from "./Fragmenter";
+import { ErrorCodes, RSocketError } from "./Errors.js";
+import { fragment, isFragmentable } from "./Fragmenter.js";
 import {
   CancelFrame,
   ErrorFrame,
@@ -25,21 +25,21 @@ import {
   PayloadFrame,
   RequestNFrame,
   RequestResponseFrame,
-} from "./Frames";
-import { LeaseManager } from "./Lease";
-import * as Reassembler from "./Reassembler";
+} from "./Frames.js";
+import { LeaseManager } from "./Lease.js";
+import * as Reassembler from "./Reassembler.js";
 import {
   Cancellable,
   OnExtensionSubscriber,
   OnNextSubscriber,
   OnTerminalSubscriber,
   Payload,
-} from "./RSocket";
+} from "./RSocket.js";
 import {
   Stream,
   StreamFrameHandler,
   StreamLifecycleHandler,
-} from "./Transport";
+} from "./Transport.js";
 
 export class RequestResponseRequesterStream
   implements

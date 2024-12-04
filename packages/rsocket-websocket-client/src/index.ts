@@ -16,4 +16,4 @@
 
 "use strict";
 
-export * from "./WebsocketClientTransport";
+export * from "./WebsocketClientTransport.js";

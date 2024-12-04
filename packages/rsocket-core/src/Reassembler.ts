@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Payload } from "./RSocket";
+import { Payload } from "./RSocket.js";
 
 export interface FragmentsHolder {
   hasFragments: boolean;

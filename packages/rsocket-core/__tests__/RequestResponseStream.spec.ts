@@ -13,7 +13,7 @@ import {
   OnTerminalSubscriber,
   Payload,
 } from "../src/RSocket";
-import { MockStream } from "./test-utils/MockStream";
+import { MockStream } from "./test-utils/MockStream.js";
 
 describe("RequestResponseStream Test", () => {
   describe("Requester", () => {

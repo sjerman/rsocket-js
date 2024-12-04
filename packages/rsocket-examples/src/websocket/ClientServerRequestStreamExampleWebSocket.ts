@@ -25,15 +25,15 @@ import {
 import { WebsocketClientTransport } from "rsocket-websocket-client";
 import { WebsocketServerTransport } from "rsocket-websocket-server";
 import { exit } from "process";
-import WebSocket from "ws";
-import Logger from "../shared/logger";
+import { WebSocketServer } from "ws";
+import Logger from "../shared/logger.js";
 
 function makeServer() {
   return new RSocketServer({
     transport: new WebsocketServerTransport({
       wsCreator: (options) => {
-        return new WebSocket.Server({
-          port: 8080,
+        return new WebSocketServer({
+          port: 9909,
         });
       },
     }),
@@ -94,7 +94,7 @@ function makeServer() {
 function makeConnector() {
   return new RSocketConnector({
     transport: new WebsocketClientTransport({
-      url: "ws://localhost:8080",
+      url: "ws://localhost:9909",
       wsCreator: (url) => new WebSocket(url) as any,
     }),
   });

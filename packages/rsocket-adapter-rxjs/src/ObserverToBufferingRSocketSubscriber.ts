@@ -23,7 +23,7 @@ import {
 } from "rsocket-core";
 import { Codec } from "rsocket-messaging";
 import { Observer, Subscription } from "rxjs";
-import { applyMixins } from "./Utils";
+import { applyMixins } from "./Utils.js";
 
 interface ObserverToBufferingRSocketSubscriber<T>
   extends Subscription,

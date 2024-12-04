@@ -1,2 +1,2 @@
-export { RSocketApolloServer } from "./RSocketApolloServer";
-export { RSocketApolloGraphlQLPlugin } from "./RSocketApolloGraphlQLPlugin";
+export { RSocketApolloServer } from "./RSocketApolloServer.js";
+export { RSocketApolloGraphlQLPlugin } from "./RSocketApolloGraphlQLPlugin.js";

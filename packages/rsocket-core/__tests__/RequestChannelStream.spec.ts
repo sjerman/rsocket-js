@@ -14,7 +14,7 @@ import {
   Payload,
   Requestable,
 } from "../src/RSocket";
-import { MockStream } from "./test-utils/MockStream";
+import { MockStream } from "./test-utils/MockStream.js";
 
 describe("RequestChannelStream Test", () => {
   describe("Requester", () => {

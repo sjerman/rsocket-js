@@ -1,5 +1,5 @@
 import { encodeCustomMetadataHeader } from "rsocket-composite-metadata";
-import { hex } from "./test-utils/hex";
+import { hex } from "./test-utils/hex.js";
 
 describe("encodeCustomMetadataHeader", () => {
   it("throws if length is less than 1", () => {

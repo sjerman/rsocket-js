@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ErrorCodes, RSocketError } from "./Errors";
+import { ErrorCodes, RSocketError } from "./Errors.js";
 import {
   ErrorFrame,
   Flags,
@@ -29,24 +29,24 @@ import {
   ResumeFrame,
   ResumeOkFrame,
   SetupFrame,
-} from "./Frames";
-import { LeaseManager } from "./Lease";
+} from "./Frames.js";
+import { LeaseManager } from "./Lease.js";
 import {
   RequestChannelRequesterStream,
   RequestChannelResponderStream,
-} from "./RequestChannelStream";
+} from "./RequestChannelStream.js";
 import {
   RequestFnFRequesterStream,
   RequestFnfResponderStream,
-} from "./RequestFnFStream";
+} from "./RequestFnFStream.js";
 import {
   RequestResponseRequesterStream,
   RequestResponseResponderStream,
-} from "./RequestResponseStream";
+} from "./RequestResponseStream.js";
 import {
   RequestStreamRequesterStream,
   RequestStreamResponderStream,
-} from "./RequestStreamStream";
+} from "./RequestStreamStream.js";
 import {
   Cancellable,
   OnExtensionSubscriber,
@@ -55,7 +55,7 @@ import {
   Payload,
   Requestable,
   RSocket,
-} from "./RSocket";
+} from "./RSocket.js";
 import {
   ConnectionFrameHandler,
   DuplexConnection,
@@ -66,7 +66,7 @@ import {
   StreamFrameHandler,
   StreamLifecycleHandler,
   StreamRequestHandler,
-} from "./Transport";
+} from "./Transport.js";
 
 export class RSocketRequester implements RSocket {
   constructor(

@@ -36,7 +36,7 @@ import {
 } from "rsocket-composite-metadata";
 import { exit } from "process";
 import MESSAGE_RSOCKET_ROUTING = WellKnownMimeType.MESSAGE_RSOCKET_ROUTING;
-import Logger from "./shared/logger";
+import Logger from "./shared/logger.js";
 
 let serverCloseable;
 

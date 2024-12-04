@@ -26,7 +26,7 @@ import {
   ServerTransport,
 } from "rsocket-core";
 import { WebSocket, WebSocketServer } from "ws";
-import { WebsocketDuplexConnection } from "./WebsocketDuplexConnection";
+import { WebsocketDuplexConnection } from "./WebsocketDuplexConnection.js";
 
 export type SocketFactory = (options: SocketOptions) => WebSocketServer;
 

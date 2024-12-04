@@ -32,9 +32,9 @@ import {
   TeardownLogic,
   Unsubscribable,
 } from "rxjs";
-import ObserverToBufferingRSocketSubscriber from "./ObserverToBufferingRSocketSubscriber";
-import RSocketPublisherToPrefetchingObservable from "./RSocketPublisherToPrefetchingObservable";
-import { applyMixins } from "./Utils";
+import ObserverToBufferingRSocketSubscriber from "./ObserverToBufferingRSocketSubscriber.js";
+import RSocketPublisherToPrefetchingObservable from "./RSocketPublisherToPrefetchingObservable.js";
+import { applyMixins } from "./Utils.js";
 
 interface Observer2BufferingSubscriberToPublisher2PrefetchingObservable<In, Out>
   extends ObserverToBufferingRSocketSubscriber<In>,

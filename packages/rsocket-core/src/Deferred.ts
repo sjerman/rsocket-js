@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Closeable } from "./Common";
+import { Closeable } from "./Common.js";
 
 export class Deferred implements Closeable {
   private _done: boolean = false;

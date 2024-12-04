@@ -26,7 +26,7 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client/core";
 import gql from "graphql-tag";
-import { resolvers } from "./resolvers";
+import { resolvers } from "./resolvers.js";
 import { DocumentNode } from "@apollo/client";
 import * as fs from "fs";
 import path from "path";

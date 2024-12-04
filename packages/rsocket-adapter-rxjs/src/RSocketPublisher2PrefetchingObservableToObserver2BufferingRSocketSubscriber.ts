@@ -24,9 +24,9 @@ import {
 } from "rsocket-core";
 import { Codec } from "rsocket-messaging";
 import { asyncScheduler, SchedulerLike, Subscriber, TeardownLogic } from "rxjs";
-import ObserverToBufferingRSocketSubscriber from "./ObserverToBufferingRSocketSubscriber";
-import RSocketPublisherToPrefetchingObservable from "./RSocketPublisherToPrefetchingObservable";
-import { applyMixins } from "./Utils";
+import ObserverToBufferingRSocketSubscriber from "./ObserverToBufferingRSocketSubscriber.js";
+import RSocketPublisherToPrefetchingObservable from "./RSocketPublisherToPrefetchingObservable.js";
+import { applyMixins } from "./Utils.js";
 
 interface RSocketPublisher2PrefetchingObservableToObserver2BufferingRSocketSubscriber<
   IN,
