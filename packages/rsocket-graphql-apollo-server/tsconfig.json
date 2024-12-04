@@ -1,3 +1,17 @@
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.build.json",
+
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "rsocket-core": ["../rsocket-core/dist"],
+      "rsocket-composite-metadata": ["../rsocket-composite-metadata/dist"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../rsocket-core" },
+    { "path": "../rsocket-composite-metadata" }
+  ]
 }

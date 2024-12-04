@@ -1,3 +1,13 @@
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.build.json",
+
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "rsocket-messaging": ["../rsocket-messaging/dist"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [{ "path": "../rsocket-messaging" }]
 }

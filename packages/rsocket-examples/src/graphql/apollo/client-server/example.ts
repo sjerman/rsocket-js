@@ -30,7 +30,7 @@ import { resolvers } from "./resolvers";
 import { DocumentNode } from "@apollo/client";
 import * as fs from "fs";
 import path from "path";
-import { RSocketApolloGraphlQLPlugin } from "rsocket-graphql-apollo-server/src/RSocketApolloGraphlQLPlugin";
+import { RSocketApolloGraphlQLPlugin } from "rsocket-graphql-apollo-server";
 
 let apolloServer: RSocketApolloServer;
 let rsocketClient: RSocket;

@@ -1,7 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
+
   "compilerOptions": {
-    "downlevelIteration": true,
-    "types": ["node", "jest"]
-  }
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*"]
 }

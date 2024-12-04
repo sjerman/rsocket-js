@@ -2,10 +2,13 @@
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "rsocket-*": [
-        "packages/rsocket-*/src"
-      ]
-    }
-  }
+    "composite": true
+  },
+  "references": [
+    { "path": "./packages/rsocket-core" },
+    { "path": "./packages/rsocket-composite-metadata" },
+    { "path": "./packages/rsocket-messaging" },
+    { "path": "./packages/rsocket-composite-metadata" },
+    { "path": "./packages/rsocket-adapter-rxjs" }
+  ]
 }

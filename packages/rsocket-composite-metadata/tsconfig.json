@@ -1,7 +1,13 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
+
   "compilerOptions": {
-    "downlevelIteration": true,
-    "types": ["node", "jest"]
-  }
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "rsocket-core": ["../rsocket-core/dist"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [{ "path": "../rsocket-core" }]
 }

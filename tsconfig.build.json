@@ -1,19 +1,37 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES6",
+    "incremental": true,
+    "moduleResolution": "bundler",
+    "module": "ES2020",
+    "target": "ES2020",
     "sourceMap": true,
     "noEmitOnError": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "types": ["node", "jest"],
     "declaration": true,
-    "resolveJsonModule": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    // "resolveJsonModule": true,
+    "skipLibCheck": true,
+
+    "composite": true,
+
+    // "strict": true,
+    // "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "strictNullChecks": true,
+    // "strictFunctionTypes": true
+    // "strictBindCallApply": true,
+    // "strictPropertyInitialization": true,
+    // "alwaysStrict": true,
+    // "useUnknownInCatchVariables": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/__tests__"
+  "files": [],
+  "references": [
+    { "path": "./packages/rsocket-core" },
+    { "path": "./packages/rsocket-composite-metadata" },
+    { "path": "./packages/rsocket-messaging" },
+    { "path": "./packages/rsocket-websocket-client" },
+    { "path": "./packages/rsocket-adapter-rxjs" }
   ]
 }

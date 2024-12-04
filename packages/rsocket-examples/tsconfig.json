@@ -1,9 +1,27 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
 
   "compilerOptions": {
-    "downlevelIteration": true,
-    "sourceMap": true,
-    "target": "ESNext"
-  }
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "paths": {
+      "rsocket-core": ["../rsocket-core/dist"],
+      "rsocket-composite-metadata": ["../rsocket-composite-metadata/dist"],
+      "rsocket-adapter-rxjs": ["../rsocket-adapter-rxjs/dist"],
+      "rsocket-tcp-client": ["../rsocket-tcp-client/dist"],
+      "rsocket-tcp-server": ["../rsocket-tcp-server/dist"],
+      "rsocket-websocket-client": ["../rsocket-websocket-client/dist"],
+      "rsocket-websocket-server": ["../rsocket-websocket-server/dist"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../rsocket-core" },
+    { "path": "../rsocket-composite-metadata" },
+    { "path": "../rsocket-adapter-rxjs" },
+    { "path": "../rsocket-tcp-client" },
+    { "path": "../rsocket-tcp-server" },
+    { "path": "../rsocket-websocket-client" },
+    { "path": "../rsocket-websocket-server" }
+  ]
 }

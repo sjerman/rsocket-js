@@ -1,9 +1,11 @@
 {
   "name": "rsocket-composite-metadata",
-  "version": "1.0.0-alpha.3",
+  "version": "1.1.0",
   "license": "Apache-2.0",
-  "main": "dist/index",
-  "types": "dist/index",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": "./dist/index.js",
   "files": [
     "dist",
     "LICENSE"
@@ -12,17 +14,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn run clean && yarn run compile",
-    "clean": "rimraf -rf ./dist",
-    "compile": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "yarn run build",
-    "test": "yarn jest"
+    "build": "../../node_modules/.bin/tsc -b",
+    "clean": "../../node_modules/.bin/rimraf node_modules dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "../../node_modules/.bin/eslint src/**/**.ts"
   },
   "dependencies": {
-    "rsocket-core": "^1.0.0-alpha.3"
-  },
-  "devDependencies": {
-    "rimraf": "~3.0.2",
-    "typescript": "~4.5.2"
+    "rsocket-core": "1.1.0"
   }
 }
