@@ -1,6 +1,6 @@
 {
-  "name": "rsocket-graphql-apollo-link",
-  "version": "1.1.0",
+  "name": "@sjerman/rsocket-graphql-apollo-link",
+  "version": "1.1.1",
   "license": "Apache-2.0",
   "typings": "./dist/index.d.js",
   "type": "module",
@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
-    "rsocket-composite-metadata": "1.1.0",
-    "rsocket-core": "1.1.0",
+    "@sjerman/rsocket-composite-metadata": "1.1.1",
+    "@sjerman/rsocket-core": "1.1.1",
     "graphql": "^16.3.0"
   },
   "devDependencies": {

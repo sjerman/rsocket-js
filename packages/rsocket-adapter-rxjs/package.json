@@ -1,6 +1,6 @@
 {
-  "name": "rsocket-adapter-rxjs",
-  "version": "1.1.0",
+  "name": "@sjerman/rsocket-adapter-rxjs",
+  "version": "1.1.1",
   "license": "Apache-2.0",
   "typings": "./dist/index.d.js",
   "type": "module",
@@ -28,8 +28,8 @@
     "eslint": "../../node_modules/.bin/eslint src/**/**.ts"
   },
   "dependencies": {
-    "rsocket-core": "1.1.0",
-    "rsocket-messaging": "1.1.0",
+    "@sjerman/rsocket-core": "1.1.1",
+    "@sjerman/rsocket-messaging": "1.1.1",
     "rxjs": "^7.4.0"
   },
   "devDependencies": {

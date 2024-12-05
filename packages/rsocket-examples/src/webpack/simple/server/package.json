@@ -1,5 +1,5 @@
 {
-  "name": "rsocket-examples-websocket-simple-server",
+  "name": "@sjerman/rsocket-examples-websocket-simple-server",
   "version": "0.0.0",
   "license": "Apache-2.0",
   "private": true,
@@ -24,7 +24,5 @@
     "rsocket-websocket-server": "^1.0.0-alpha.3",
     "ws": "~8.2.3"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }

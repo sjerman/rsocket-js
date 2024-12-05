@@ -1,5 +1,5 @@
 {
-  "name": "rsocket-js",
+  "name": "@sjerman/rsocket-js",
   "description": "A JavaScript implementation of the RSocket protocol (https://github.com/rsocket/rsocket).",
   "private": true,
   "workspaces": [
@@ -12,11 +12,12 @@
     "clean": "./node_modules/.bin/rimraf ./superbin tsconfig.tsbuildinfo ./packages/**/bin ./packages/**/tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "rsocket-adapter-rxjs": "1.1.0",
-    "rsocket-core": "1.1.0",
-    "rsocket-composite-metadata": "1.1.0",
-    "rsocket-websocket-client": "1.1.0",
-    "rsocket-messaging": "1.1.0"
+    "@sjerman/rsocket-adapter-rxjs": "1.1.0",
+    "@sjerman/rsocket-core": "1.1.0",
+    "@sjerman/rsocket-composite-metadata": "1.1.0",
+    "@sjerman/rsocket-websocket-client": "1.1.0",
+    "@sjerman/rsocket-websocket-server": "1.1.0",
+    "@sjerman/rsocket-messaging": "1.1.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

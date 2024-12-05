@@ -1,6 +1,6 @@
 {
-  "name": "rsocket-composite-metadata",
-  "version": "1.1.0",
+  "name": "@sjerman/rsocket-composite-metadata",
+  "version": "1.1.1",
   "license": "Apache-2.0",
   "typings": "./dist/index.d.js",
   "type": "module",
@@ -28,7 +28,7 @@
     "eslint": "../../node_modules/.bin/eslint src/**/**.ts"
   },
   "dependencies": {
-    "rsocket-core": "1.1.0"
+    "@sjerman/rsocket-core": "1.1.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.1"

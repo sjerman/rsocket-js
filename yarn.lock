@@ -888,6 +888,98 @@
   resolved "https://registry.npmjs.org/@sinonjs/text-encoding/-/text-encoding-0.7.3.tgz"
   integrity sha512-DE427ROAphMQzU4ENbliGYrBSYPXF+TtLg9S8vzeA+OF4ZKzoDdzfL8sxuMUGS/lgRhM6j1URSk9ghf7Xo1tyA==
 
+"@sjerman/rsocket-adapter-rxjs@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-adapter-rxjs":
+  version "1.1.0"
+  resolved "file:packages/rsocket-adapter-rxjs"
+  dependencies:
+    rsocket-core "1.1.0"
+    rsocket-messaging "1.1.0"
+    rxjs "^7.4.0"
+
+"@sjerman/rsocket-composite-metadata@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-composite-metadata":
+  version "1.1.0"
+  resolved "file:packages/rsocket-composite-metadata"
+  dependencies:
+    rsocket-core "1.1.0"
+
+"@sjerman/rsocket-core@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-core":
+  version "1.1.0"
+  resolved "file:packages/rsocket-core"
+
+"@sjerman/rsocket-examples@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-examples":
+  version "1.1.0"
+  resolved "file:packages/rsocket-examples"
+  dependencies:
+    "@apollo/client" "^3.5.10"
+    graphql "^16.0.0"
+    graphql-subscriptions "^2.0.0"
+    graphql-tag "^2.12.6"
+    react "18.3.1"
+    rsocket-adapter-rxjs "1.1.0"
+    rsocket-composite-metadata "1.1.0"
+    rsocket-core "1.1.0"
+    rsocket-tcp-client "1.1.0"
+    rsocket-tcp-server "1.1.0"
+    rsocket-websocket-client "1.1.0"
+    rsocket-websocket-server "1.1.0"
+    ws "^8.5.13"
+
+"@sjerman/rsocket-graphql-apollo-link@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-graphql-apollo-link":
+  version "1.1.0"
+  resolved "file:packages/rsocket-graphql-apollo-link"
+  dependencies:
+    "@apollo/client" "^3.5.10"
+    graphql "^16.3.0"
+    rsocket-composite-metadata "1.1.0"
+    rsocket-core "1.1.0"
+
+"@sjerman/rsocket-graphql-apollo-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-graphql-apollo-server":
+  version "1.1.0"
+  resolved "file:packages/rsocket-graphql-apollo-server"
+  dependencies:
+    "@apollo/client" "^3.5.10"
+    "@graphql-tools/schema" "^8.3.5"
+    apollo-server-core "^3.6.6"
+    apollo-server-env "^4.2.1"
+    apollo-server-plugin-base "^3.6.2"
+    graphql "^16.3.0"
+    rsocket-composite-metadata "1.1.0"
+    rsocket-core "1.1.0"
+    rxjs "^7.5"
+
+"@sjerman/rsocket-messaging@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-messaging":
+  version "1.1.0"
+  resolved "file:packages/rsocket-messaging"
+  dependencies:
+    rsocket-composite-metadata "1.1.0"
+    rsocket-core "1.1.0"
+    rsocket-messaging "1.1.0"
+
+"@sjerman/rsocket-tcp-client@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-tcp-client":
+  version "1.1.0"
+  resolved "file:packages/rsocket-tcp-client"
+  dependencies:
+    rsocket-core "1.1.0"
+
+"@sjerman/rsocket-tcp-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-tcp-server":
+  version "1.1.0"
+  resolved "file:packages/rsocket-tcp-server"
+  dependencies:
+    rsocket-core "1.1.0"
+
+"@sjerman/rsocket-websocket-client@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-websocket-client":
+  version "1.1.0"
+  resolved "file:packages/rsocket-websocket-client"
+  dependencies:
+    rsocket-core "1.1.0"
+
+"@sjerman/rsocket-websocket-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-websocket-server":
+  version "1.1.0"
+  resolved "file:packages/rsocket-websocket-server"
+  dependencies:
+    rsocket-core "1.1.0"
+    ws "^8.5.13"
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.11"
   resolved "https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.11.tgz"
@@ -3665,7 +3757,7 @@ rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
-rsocket-adapter-rxjs@1.1.0, "rsocket-adapter-rxjs@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-adapter-rxjs":
+rsocket-adapter-rxjs@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-adapter-rxjs"
   dependencies:
@@ -3673,58 +3765,17 @@ rsocket-adapter-rxjs@1.1.0, "rsocket-adapter-rxjs@file:/Users/sjerman/Bitbucket/
     rsocket-messaging "1.1.0"
     rxjs "^7.4.0"
 
-rsocket-composite-metadata@1.1.0, "rsocket-composite-metadata@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-composite-metadata":
+rsocket-composite-metadata@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-composite-metadata"
   dependencies:
     rsocket-core "1.1.0"
 
-rsocket-core@1.1.0, "rsocket-core@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-core":
+rsocket-core@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-core"
 
-"rsocket-examples@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-examples":
-  version "1.1.0"
-  resolved "file:packages/rsocket-examples"
-  dependencies:
-    "@apollo/client" "^3.5.10"
-    graphql "^16.0.0"
-    graphql-subscriptions "^2.0.0"
-    graphql-tag "^2.12.6"
-    react "18.3.1"
-    rsocket-adapter-rxjs "1.1.0"
-    rsocket-composite-metadata "1.1.0"
-    rsocket-core "1.1.0"
-    rsocket-tcp-client "1.1.0"
-    rsocket-tcp-server "1.1.0"
-    rsocket-websocket-client "1.1.0"
-    rsocket-websocket-server "1.1.0"
-    ws "^8.5.13"
-
-"rsocket-graphql-apollo-link@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-graphql-apollo-link":
-  version "1.1.0"
-  resolved "file:packages/rsocket-graphql-apollo-link"
-  dependencies:
-    "@apollo/client" "^3.5.10"
-    graphql "^16.3.0"
-    rsocket-composite-metadata "1.1.0"
-    rsocket-core "1.1.0"
-
-"rsocket-graphql-apollo-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-graphql-apollo-server":
-  version "1.1.0"
-  resolved "file:packages/rsocket-graphql-apollo-server"
-  dependencies:
-    "@apollo/client" "^3.5.10"
-    "@graphql-tools/schema" "^8.3.5"
-    apollo-server-core "^3.6.6"
-    apollo-server-env "^4.2.1"
-    apollo-server-plugin-base "^3.6.2"
-    graphql "^16.3.0"
-    rsocket-composite-metadata "1.1.0"
-    rsocket-core "1.1.0"
-    rxjs "^7.5"
-
-rsocket-messaging@1.1.0, "rsocket-messaging@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-messaging":
+rsocket-messaging@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-messaging"
   dependencies:
@@ -3732,25 +3783,25 @@ rsocket-messaging@1.1.0, "rsocket-messaging@file:/Users/sjerman/Bitbucket/saas/r
     rsocket-core "1.1.0"
     rsocket-messaging "1.1.0"
 
-rsocket-tcp-client@1.1.0, "rsocket-tcp-client@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-tcp-client":
+rsocket-tcp-client@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-tcp-client"
   dependencies:
     rsocket-core "1.1.0"
 
-rsocket-tcp-server@1.1.0, "rsocket-tcp-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-tcp-server":
+rsocket-tcp-server@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-tcp-server"
   dependencies:
     rsocket-core "1.1.0"
 
-rsocket-websocket-client@1.1.0, "rsocket-websocket-client@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-websocket-client":
+rsocket-websocket-client@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-websocket-client"
   dependencies:
     rsocket-core "1.1.0"
 
-rsocket-websocket-server@1.1.0, "rsocket-websocket-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-websocket-server":
+rsocket-websocket-server@1.1.0:
   version "1.1.0"
   resolved "file:packages/rsocket-websocket-server"
   dependencies:
