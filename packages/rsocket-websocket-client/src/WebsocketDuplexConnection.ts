@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { Buffer } from "buffer";
+
 import {
   Closeable,
   Deferred,

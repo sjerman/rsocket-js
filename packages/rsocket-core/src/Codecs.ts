@@ -53,6 +53,8 @@ export const MAX_VERSION = 0xffff; // uint16
 
 export type Encoding = "ascii" | "base64" | "hex" | "utf8";
 
+import { Buffer } from "buffer";
+
 /**
  * Mimimum value that would overflow bitwise operators (2^32).
  */

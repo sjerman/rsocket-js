@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { Buffer } from "buffer";
 export class RoutingMetadata implements Iterable<string> {
   _buffer: Buffer;
 

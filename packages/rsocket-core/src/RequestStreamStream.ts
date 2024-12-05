@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { Buffer } from "buffer";
+
 import { ErrorCodes, RSocketError } from "./Errors.js";
 import {
   fragment,

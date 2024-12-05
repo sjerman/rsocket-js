@@ -1,4 +1,5 @@
 import { mock } from "jest-mock-extended";
+import { Buffer } from "buffer";
 import {
   Demultiplexer,
   Deserializer,

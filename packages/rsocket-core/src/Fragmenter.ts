@@ -25,6 +25,7 @@ import {
   RequestStreamFrame,
 } from "./Frames.js";
 import { Payload } from "./RSocket.js";
+import { Buffer } from "buffer";
 
 export function isFragmentable(
   payload: Payload,

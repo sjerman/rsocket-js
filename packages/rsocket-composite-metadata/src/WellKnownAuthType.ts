@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+
 export class WellKnownAuthType {
   constructor(readonly string: string, readonly identifier: number) {}
 

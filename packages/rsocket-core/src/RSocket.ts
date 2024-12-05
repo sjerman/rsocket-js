@@ -15,7 +15,7 @@
  */
 
 import { Closeable } from "./Common.js";
-
+import { Buffer } from "buffer";
 /**
  * A single unit of data exchanged between the peers of a `RSocket`.
  */

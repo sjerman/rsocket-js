@@ -13,6 +13,7 @@
     "clean": "./node_modules/.bin/rimraf ./superbin tsconfig.tsbuildinfo ./packages/**/bin ./packages/**/tsconfig.tsbuildinfo"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "react": "18.3.1",
     "rxjs": "^7.4.0",
     "ws": "^8.5.13"

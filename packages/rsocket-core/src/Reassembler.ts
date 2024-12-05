@@ -15,6 +15,7 @@
  */
 
 import { Payload } from "./RSocket.js";
+import { Buffer } from "buffer";
 
 export interface FragmentsHolder {
   hasFragments: boolean;

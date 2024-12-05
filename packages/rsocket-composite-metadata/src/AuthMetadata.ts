@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { Buffer } from "buffer";
 import { WellKnownAuthType } from "./WellKnownAuthType.js";
 
 const authTypeIdBytesLength = 1;

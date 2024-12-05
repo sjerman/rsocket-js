@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { Buffer } from "buffer";
+
 export enum FrameTypes {
   RESERVED = 0x00, // Reserved
   SETUP = 0x01, // Setup: Sent by client to initiate protocol processing.
