@@ -17,10 +17,10 @@
   },
   "devDependencies": {
     "buffer": "^6.0.3",
-    "rsocket-adapter-rxjs": "^1.0.0-alpha.4",
-    "rsocket-composite-metadata": "^1.0.0-alpha.3",
-    "rsocket-core": "^1.0.0-alpha.3",
-    "rsocket-websocket-client": "^1.0.0-alpha.3",
+    "@sjerman/rsocket-adapter-rxjs": "^1.0.0-alpha.4",
+    "@sjerman/rsocket-composite-metadata": "^1.0.0-alpha.3",
+    "@sjerman/rsocket-core": "^1.0.0-alpha.3",
+    "@sjerman/rsocket-websocket-client": "^1.0.0-alpha.3",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0"

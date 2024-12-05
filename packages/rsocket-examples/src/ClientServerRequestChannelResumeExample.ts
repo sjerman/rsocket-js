@@ -26,8 +26,8 @@ import {
   RSocketServer,
 } from "rsocket-core";
 import { exit } from "process";
-import { TcpClientTransport } from "rsocket-tcp-client";
-import { TcpServerTransport } from "rsocket-tcp-server";
+import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
+import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 
 async function main() {
   const server = new RSocketServer({

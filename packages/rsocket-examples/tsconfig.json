@@ -6,19 +6,29 @@
     "rootDir": "./src",
     // "baseUrl": "./src",
     "paths": {
-      "rsocket-core": ["../rsocket-core/dist"],
-      "rsocket-composite-metadata": ["../rsocket-composite-metadata/dist"],
-      "rsocket-adapter-rxjs": ["../rsocket-adapter-rxjs/dist"],
-      "rsocket-tcp-client": ["../rsocket-tcp-client/dist"],
-      "rsocket-tcp-server": ["../rsocket-tcp-server/dist"],
-      "rsocket-websocket-client": ["../rsocket-websocket-client/dist"],
-      "rsocket-websocket-server": ["../rsocket-websocket-server/dist"]
+      "@sjerman/rsocket-core": ["../rsocket-core/dist"],
+      "@sjerman/rsocket-composite-metadata": [
+        "../rsocket-composite-metadata/dist"
+      ],
+      "@sjerman/rsocket-graphql-apollo-link": [
+        "../rsocket-graphql-apollo-link/dist"
+      ],
+      "@sjerman/rsocket-graphql-apollo-server": [
+        "../rsocket-graphql-apollo-server/dist"
+      ],
+      "@sjerman/rsocket-adapter-rxjs": ["../rsocket-adapter-rxjs/dist"],
+      "@sjerman/rsocket-messaging": ["../rsocket-messaging/dist"],
+      "@sjerman/rsocket-tcp-client": ["../rsocket-tcp-client/dist"],
+      "@sjerman/rsocket-tcp-server": ["../rsocket-tcp-server/dist"],
+      "@sjerman/rsocket-websocket-client": ["../rsocket-websocket-client/dist"],
+      "@sjerman/rsocket-websocket-server": ["../rsocket-websocket-server/dist"]
     }
   },
   "include": ["src/**/*"],
   "references": [
     { "path": "../rsocket-core" },
     { "path": "../rsocket-composite-metadata" },
+    { "path": "../rsocket-messaging" },
     { "path": "../rsocket-adapter-rxjs" },
     { "path": "../rsocket-tcp-client" },
     { "path": "../rsocket-tcp-server" },

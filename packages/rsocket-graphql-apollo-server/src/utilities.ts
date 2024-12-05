@@ -1,4 +1,4 @@
-import { Payload } from "rsocket-core";
+import { Payload } from "@sjerman/rsocket-core";
 import {
   decodeCompositeMetadata,
   decodeRoutes,

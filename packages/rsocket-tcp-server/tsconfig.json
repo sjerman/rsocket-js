@@ -5,7 +5,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "rsocket-core": ["../rsocket-core/dist"]
+      "@sjerman/rsocket-core": ["../rsocket-core/dist"]
     }
   },
   "include": ["src/**/*"],

@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
-import { RSocket, RSocketConnector, RSocketServer } from "rsocket-core";
-import { TcpClientTransport } from "rsocket-tcp-client";
-import { TcpServerTransport } from "rsocket-tcp-server";
+import {
+  RSocket,
+  RSocketConnector,
+  RSocketServer,
+} from "@sjerman/rsocket-core";
+import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
+import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import { exit } from "process";
-import { makeRSocketLink } from "rsocket-graphql-apollo-link";
-import { RSocketApolloServer } from "rsocket-graphql-apollo-server";
+import { makeRSocketLink } from "@sjerman/rsocket-graphql-apollo-link";
+import { RSocketApolloServer } from "@sjerman/rsocket-graphql-apollo-server";
 import {
   ApolloClient,
   InMemoryCache,
@@ -30,7 +34,7 @@ import { resolvers } from "./resolvers.js";
 import { DocumentNode } from "@apollo/client";
 import * as fs from "fs";
 import path from "path";
-import { RSocketApolloGraphlQLPlugin } from "rsocket-graphql-apollo-server";
+import { RSocketApolloGraphlQLPlugin } from "@sjerman/rsocket-graphql-apollo-server";
 
 let apolloServer: RSocketApolloServer;
 let rsocketClient: RSocket;

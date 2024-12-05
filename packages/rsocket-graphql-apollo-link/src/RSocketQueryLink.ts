@@ -22,7 +22,7 @@ import {
   Observable,
   Operation,
 } from "@apollo/client/core";
-import { Payload, RSocket } from "rsocket-core";
+import { Payload, RSocket } from "@sjerman/rsocket-core";
 import {
   encodeCompositeMetadata,
   encodeRoutes,

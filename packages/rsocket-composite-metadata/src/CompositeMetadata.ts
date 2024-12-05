@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { readUInt24BE, writeUInt24BE } from "rsocket-core";
+import { readUInt24BE, writeUInt24BE } from "@sjerman/rsocket-core";
 import { WellKnownMimeType } from "./WellKnownMimeType.js";
 
 export class CompositeMetadata implements Iterable<Entry> {

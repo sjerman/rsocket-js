@@ -14,11 +14,18 @@
  * limitations under the License.
  */
 
-import { RSocket, RSocketConnector, RSocketServer } from "rsocket-core";
-import { Codec } from "rsocket-messaging";
-import { RxRequestersFactory, RxRespondersFactory } from "rsocket-adapter-rxjs";
-import { TcpClientTransport } from "rsocket-tcp-client";
-import { TcpServerTransport } from "rsocket-tcp-server";
+import {
+  RSocket,
+  RSocketConnector,
+  RSocketServer,
+} from "@sjerman/rsocket-core";
+import { Codec } from "@sjerman/rsocket-messaging";
+import {
+  RxRequestersFactory,
+  RxRespondersFactory,
+} from "@sjerman/rsocket-adapter-rxjs";
+import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
+import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import { exit } from "process";
 import {
   firstValueFrom,

@@ -2,7 +2,7 @@
   "name": "@sjerman/rsocket-websocket-client",
   "version": "1.1.1",
   "license": "Apache-2.0",
-  "typings": "./dist/index.d.js",
+  "typings": "./dist/index.d.ts",
   "type": "module",
   "module": "./dist/index.js",
   "exports": {

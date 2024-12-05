@@ -5,7 +5,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "rsocket-messaging": ["../rsocket-messaging/dist"]
+      "@sjerman/rsocket-messaging": ["../rsocket-messaging/dist"]
     }
   },
   "include": ["src/**/*"],

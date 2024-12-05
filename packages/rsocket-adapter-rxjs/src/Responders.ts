@@ -25,7 +25,7 @@ import {
   Payload,
   Requestable,
 } from "rsocket-core";
-import { Codec } from "rsocket-messaging";
+import { Codec } from "@sjerman/rsocket-messaging";
 import { asyncScheduler, Observable, SchedulerLike } from "rxjs";
 import ObserverToBufferingRSocketSubscriber from "./ObserverToBufferingRSocketSubscriber.js";
 import ObserverToRSocketSubscriber from "./ObserverToRSocketSubscriber.js";

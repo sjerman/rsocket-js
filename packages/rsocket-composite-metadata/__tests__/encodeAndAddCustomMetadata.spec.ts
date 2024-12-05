@@ -1,4 +1,4 @@
-import { encodeAndAddCustomMetadata } from "rsocket-composite-metadata";
+import { encodeAndAddCustomMetadata } from "@sjerman/rsocket-composite-metadata";
 import { hex } from "./test-utils/hex.js";
 
 describe("encodeAndAddCustomMetadata", () => {

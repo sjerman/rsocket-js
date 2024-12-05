@@ -24,7 +24,7 @@ import {
   Observer,
   Operation,
 } from "@apollo/client/core";
-import { MAX_REQUEST_COUNT, Payload, RSocket } from "rsocket-core";
+import { MAX_REQUEST_COUNT, Payload, RSocket } from "@sjerman/rsocket-core";
 import { ExecutionResult, print } from "graphql";
 import {
   encodeCompositeMetadata,

@@ -22,7 +22,7 @@ import {
   OnTerminalSubscriber,
   Requestable,
 } from "rsocket-core";
-import { Codec } from "rsocket-messaging";
+import { Codec } from "@sjerman/rsocket-messaging";
 import {
   asyncScheduler,
   Observable,

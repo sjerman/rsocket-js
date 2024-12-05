@@ -24,8 +24,8 @@ import {
 } from "rsocket-core";
 import { exit } from "process";
 import Logger from "../shared/logger";
-import { TcpServerTransport } from "rsocket-tcp-server";
-import { TcpClientTransport } from "rsocket-tcp-client";
+import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
+import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
 
 function makeServer() {
   return new RSocketServer({

@@ -23,8 +23,8 @@ import {
   RSocketConnector,
   RSocketServer,
 } from "rsocket-core";
-import { TcpClientTransport } from "rsocket-tcp-client";
-import { TcpServerTransport } from "rsocket-tcp-server";
+import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
+import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import { exit } from "process";
 
 let serverCloseable;

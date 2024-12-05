@@ -52,6 +52,43 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@sjerman/rsocket-adapter-rxjs@^1.0.0-alpha.4":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@sjerman/rsocket-adapter-rxjs/-/rsocket-adapter-rxjs-1.1.1.tgz"
+  integrity sha512-eAfJb9ZfNNDWYEhgvjY7Jhvhp8ze2d7Eh+TqP3vQ09JDAZOUMeYm9xqBXcmp2tFzTUOnMOtnk8c8M5327TBdcQ==
+  dependencies:
+    "@sjerman/rsocket-core" "1.1.1"
+    "@sjerman/rsocket-messaging" "1.1.1"
+    rxjs "^7.4.0"
+
+"@sjerman/rsocket-composite-metadata@^1.0.0-alpha.3", "@sjerman/rsocket-composite-metadata@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@sjerman/rsocket-composite-metadata/-/rsocket-composite-metadata-1.1.1.tgz"
+  integrity sha512-RXtPj8kGKbVSgfhWpwpyUPx/BZofRDcBvsD/bKSf4y5yMGZplbM6UCM5tD8SrcffQDZvk78R6c69mpMQ97sKeQ==
+  dependencies:
+    "@sjerman/rsocket-core" "1.1.1"
+
+"@sjerman/rsocket-core@^1.0.0-alpha.3", "@sjerman/rsocket-core@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@sjerman/rsocket-core/-/rsocket-core-1.1.1.tgz"
+  integrity sha512-vxTvlEan2yfwTvUnBJklP56QdoESLT2w26yqRjj59VA9dFTgHsHUY9x/cbg8JtDsReMbilJpfZxmKlzbH8jm9w==
+
+"@sjerman/rsocket-messaging@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@sjerman/rsocket-messaging/-/rsocket-messaging-1.1.1.tgz"
+  integrity sha512-Nouv6WE//jO/zilHMypLRqg796HWQWP7I0a8SiR/x5O6evJmmA+0bquHZgqQwe2SaDDQbAaBxn8p4ZkvvdHkkA==
+  dependencies:
+    "@sjerman/rsocket-composite-metadata" "1.1.1"
+    "@sjerman/rsocket-core" "1.1.1"
+    "@sjerman/rsocket-messaging" "1.1.1"
+
+"@sjerman/rsocket-websocket-client@^1.0.0-alpha.3":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@sjerman/rsocket-websocket-client/-/rsocket-websocket-client-1.1.1.tgz"
+  integrity sha512-MY67jK+glHu9hut3/OASWW6dNjWSVwgNAnl14VA7bAxm+m0SMTyxos7Wvep6M/hnR6jfKVTaf/9gMnru939nMA==
+  dependencies:
+    "@sjerman/rsocket-core" "1.1.1"
+
 "@types/body-parser@*":
   version "1.19.3"
   resolved "https://registry.npmjs.org/@types/body-parser/-/body-parser-1.19.3.tgz"
@@ -1832,42 +1869,6 @@ rimraf@^3.0.2:
   integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
-
-rsocket-adapter-rxjs@^1.0.0-alpha.4:
-  version "1.0.0-alpha.4"
-  resolved "https://registry.npmjs.org/rsocket-adapter-rxjs/-/rsocket-adapter-rxjs-1.0.0-alpha.4.tgz"
-  integrity sha512-rfrsui1/M1pBG8A47wsgpBwHU8xdy/xgdGFIC3ICQuBLBhJeENDt+dcZXu8/MaEyWQH3GXvIGBeargd0FZTF8A==
-  dependencies:
-    rsocket-core "^1.0.0-alpha.3"
-    rsocket-messaging "^1.0.0-alpha.3"
-    rxjs "^7.4.0"
-
-rsocket-composite-metadata@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/rsocket-composite-metadata/-/rsocket-composite-metadata-1.0.0-alpha.3.tgz"
-  integrity sha512-o+msmc1pXnejLw4TDgMllynS9/L3TGJM25kqedTxqU6wVF9jnTA95w7T4scGwwX6qiAryT90HQGUaT+An44X3w==
-  dependencies:
-    rsocket-core "^1.0.0-alpha.3"
-
-rsocket-core@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/rsocket-core/-/rsocket-core-1.0.0-alpha.3.tgz"
-  integrity sha512-BzIe2w8dFJlUS5N9fGUNRkxL19kd64bxbXsT11wj7isLfKkPZeNXisB2p/LWvSjFzWStnpOiScZ0g3/8ROE0pw==
-
-rsocket-messaging@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/rsocket-messaging/-/rsocket-messaging-1.0.0-alpha.3.tgz"
-  integrity sha512-fr/BDCLI4DMyzVI5hHsABVpKlKxGX8rbfdgcXgY6VKuBlDIX0oqGApqLdSq0YfvNpgjlpuOXYj4vlhLku959Yw==
-  dependencies:
-    rsocket-composite-metadata "^1.0.0-alpha.3"
-    rsocket-core "^1.0.0-alpha.3"
-
-rsocket-websocket-client@^1.0.0-alpha.3:
-  version "1.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/rsocket-websocket-client/-/rsocket-websocket-client-1.0.0-alpha.3.tgz"
-  integrity sha512-CwTwTNMGa8BKvrWde/kM3q8IHuzO8RCIfzuj25BsVe9y8eehDQHt4fXk0g1i/wpsxTm+RY6DxE6Vr5snozKVOg==
-  dependencies:
-    rsocket-core "^1.0.0-alpha.3"
 
 rxjs@^7.4.0:
   version "7.8.1"

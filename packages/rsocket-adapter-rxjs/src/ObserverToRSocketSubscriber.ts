@@ -20,7 +20,7 @@ import {
   OnNextSubscriber,
   OnTerminalSubscriber,
 } from "rsocket-core";
-import { Codec } from "rsocket-messaging";
+import { Codec } from "@sjerman/rsocket-messaging";
 import { Observer, Subscription } from "rxjs";
 
 export default class ObserverToRSocketSubscriber<T>

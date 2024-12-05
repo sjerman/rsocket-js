@@ -21,7 +21,7 @@ import {
   OnTerminalSubscriber,
   Payload,
 } from "rsocket-core";
-import { Codec } from "rsocket-messaging";
+import { Codec } from "@sjerman/rsocket-messaging";
 import { Observable, Subscriber, TeardownLogic, Unsubscribable } from "rxjs";
 
 export default class RSocketPublisherToObservable<T>

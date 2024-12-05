@@ -1,5 +1,5 @@
-import { RSocket, RSocketConnector } from "rsocket-core";
-import { TcpClientTransport } from "rsocket-tcp-client";
+import { RSocket, RSocketConnector } from "@sjerman/rsocket-core";
+import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
 import {
   encodeCompositeMetadata,
   encodeRoute,

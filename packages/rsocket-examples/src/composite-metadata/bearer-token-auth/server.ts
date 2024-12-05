@@ -24,7 +24,7 @@ import {
   RSocketError,
   RSocketServer,
 } from "rsocket-core";
-import { TcpServerTransport } from "rsocket-tcp-server";
+import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import {
   decodeAuthMetadata,
   decodeCompositeMetadata,

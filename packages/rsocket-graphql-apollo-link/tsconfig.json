@@ -5,8 +5,10 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
-      "rsocket-core": ["../rsocket-core/dist"],
-      "rsocket-composite-metadata": ["../rsocket-composite-metadata/dist"]
+      "@sjerman/rsocket-core": ["../rsocket-core/dist"],
+      "@sjerman/rsocket-composite-metadata": [
+        "../rsocket-composite-metadata/dist"
+      ]
     }
   },
   "include": ["src/**/*"],

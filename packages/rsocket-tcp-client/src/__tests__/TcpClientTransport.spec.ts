@@ -3,7 +3,11 @@ import { TcpDuplexConnection } from "../TcpDuplexConnection";
 import * as net from "net";
 import sinon from "sinon";
 import EventEmitter from "events";
-import { Demultiplexer, FrameHandler, Multiplexer } from "rsocket-core";
+import {
+  Demultiplexer,
+  FrameHandler,
+  Multiplexer,
+} from "@sjerman/rsocket-core";
 import { mock } from "jest-mock-extended";
 
 describe("TcpClientTransport", function () {
