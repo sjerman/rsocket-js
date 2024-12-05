@@ -13,14 +13,6 @@
     "clean": "./node_modules/.bin/rimraf ./superbin tsconfig.tsbuildinfo ./packages/**/bin ./packages/**/tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "@sjerman/rsocket-adapter-rxjs": "1.1.2",
-    "@sjerman/rsocket-composite-metadata": "1.1.2",
-    "@sjerman/rsocket-core": "1.1.2",
-    "@sjerman/rsocket-messaging": "1.1.2",
-    "@sjerman/rsocket-tcp-client": "1.1.2",
-    "@sjerman/rsocket-tcp-server": "1.1.2",
-    "@sjerman/rsocket-websocket-client": "1.1.2",
-    "@sjerman/rsocket-websocket-server": "1.1.2",
     "react": "18.3.1",
     "rxjs": "^7.4.0",
     "ws": "^8.5.13"
