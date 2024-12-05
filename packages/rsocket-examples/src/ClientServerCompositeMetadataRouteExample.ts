@@ -24,7 +24,7 @@ import {
   RSocketConnector,
   RSocketError,
   RSocketServer,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
 import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import {
@@ -33,7 +33,7 @@ import {
   encodeCompositeMetadata,
   encodeRoute,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import { exit } from "process";
 import MESSAGE_RSOCKET_ROUTING = WellKnownMimeType.MESSAGE_RSOCKET_ROUTING;
 import Logger from "./shared/logger.js";

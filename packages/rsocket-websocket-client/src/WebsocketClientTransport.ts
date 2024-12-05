@@ -23,7 +23,7 @@ import {
   FrameHandler,
   Multiplexer,
   Outbound,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 
 import { WebsocketDuplexConnection } from "./WebsocketDuplexConnection.js";
 

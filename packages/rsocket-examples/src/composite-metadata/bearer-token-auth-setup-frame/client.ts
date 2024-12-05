@@ -21,7 +21,7 @@ import {
   encodeCompositeMetadata,
   encodeRoute,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import { exit } from "process";
 import Logger from "../../shared/logger";
 import MESSAGE_RSOCKET_ROUTING = WellKnownMimeType.MESSAGE_RSOCKET_ROUTING;

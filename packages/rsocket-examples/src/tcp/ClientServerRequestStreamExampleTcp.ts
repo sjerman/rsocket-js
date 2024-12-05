@@ -21,7 +21,7 @@ import {
   Payload,
   RSocketConnector,
   RSocketServer,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { exit } from "process";
 import Logger from "../shared/logger";
 import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";

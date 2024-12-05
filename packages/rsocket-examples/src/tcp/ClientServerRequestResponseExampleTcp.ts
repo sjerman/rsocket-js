@@ -22,7 +22,7 @@ import {
   RSocket,
   RSocketConnector,
   RSocketServer,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { TcpClientTransport } from "@sjerman/rsocket-tcp-client";
 import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import { exit } from "process";

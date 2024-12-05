@@ -1,6 +1,6 @@
 {
   "name": "@sjerman/rsocket-graphql-apollo-server",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "license": "Apache-2.0",
   "typings": "./dist/index.d.ts",
   "type": "module",
@@ -28,16 +28,9 @@
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@graphql-tools/schema": "^8.3.5",
-    "@sjerman/rsocket-composite-metadata": "1.1.1",
-    "@sjerman/rsocket-core": "1.1.1",
     "apollo-server-plugin-base": "^3.6.2",
     "apollo-server-core": "^3.6.6",
     "apollo-server-env": "^4.2.1",
-    "graphql": "^16.3.0",
-    "rxjs": "^7.5"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@types/ws": "^8.5.13"
+    "graphql": "^16.3.0"
   }
 }

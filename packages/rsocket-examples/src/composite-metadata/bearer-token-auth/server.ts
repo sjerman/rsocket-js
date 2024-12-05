@@ -23,7 +23,7 @@ import {
   Payload,
   RSocketError,
   RSocketServer,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { TcpServerTransport } from "@sjerman/rsocket-tcp-server";
 import {
   decodeAuthMetadata,
@@ -31,7 +31,7 @@ import {
   decodeRoutes,
   WellKnownAuthType,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import { exit } from "process";
 import Logger from "../../shared/logger";
 import MESSAGE_RSOCKET_ROUTING = WellKnownMimeType.MESSAGE_RSOCKET_ROUTING;

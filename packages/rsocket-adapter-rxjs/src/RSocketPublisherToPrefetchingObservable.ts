@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 "use strict";
+
 import {
   Cancellable,
   OnExtensionSubscriber,
@@ -21,7 +22,7 @@ import {
   OnTerminalSubscriber,
   Payload,
   Requestable,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { Codec } from "@sjerman/rsocket-messaging";
 import {
   asyncScheduler,

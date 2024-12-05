@@ -4,7 +4,7 @@ import {
   encodeCompositeMetadata,
   encodeRoute,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import Logger from "./shared/logger.js";
 import { exit } from "process";
 import MESSAGE_RSOCKET_ROUTING = WellKnownMimeType.MESSAGE_RSOCKET_ROUTING;

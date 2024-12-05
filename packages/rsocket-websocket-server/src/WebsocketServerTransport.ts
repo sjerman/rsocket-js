@@ -24,7 +24,7 @@ import {
   Multiplexer,
   Outbound,
   ServerTransport,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { WebSocket, WebSocketServer } from "ws";
 import { WebsocketDuplexConnection } from "./WebsocketDuplexConnection.js";
 

@@ -1,7 +1,7 @@
 import {
   encodeAndAddWellKnownMetadata,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import { readUInt24BE } from "@sjerman/rsocket-core";
 
 describe("encodeWellKnownMetadataHeader", () => {

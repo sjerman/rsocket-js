@@ -3,7 +3,7 @@ import {
   decodeCompositeMetadata,
   decodeRoutes,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import MESSAGE_RSOCKET_ROUTING = WellKnownMimeType.MESSAGE_RSOCKET_ROUTING;
 
 const APPLICATION_GRAPHQL_JSON = "application/graphql+json";

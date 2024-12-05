@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 "use strict";
+
 import {
   Cancellable,
   OnExtensionSubscriber,
   OnNextSubscriber,
   OnTerminalSubscriber,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { Codec } from "@sjerman/rsocket-messaging";
 import { Observer, Subscription } from "rxjs";
 

@@ -21,7 +21,7 @@ import {
   Payload,
   RSocketConnector,
   RSocketServer,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { WebsocketClientTransport } from "@sjerman/rsocket-websocket-client";
 import { WebsocketServerTransport } from "@sjerman/rsocket-websocket-server";
 import { exit } from "process";

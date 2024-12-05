@@ -30,7 +30,7 @@ import {
   encodeCompositeMetadata,
   encodeRoutes,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 
 type SubscribeOperation = {
   query: String;

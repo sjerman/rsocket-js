@@ -27,7 +27,7 @@ import {
   encodeCompositeMetadata,
   encodeRoutes,
   WellKnownMimeType,
-} from "rsocket-composite-metadata";
+} from "@sjerman/rsocket-composite-metadata";
 import { print } from "graphql";
 
 type QueryLinkOptions = {

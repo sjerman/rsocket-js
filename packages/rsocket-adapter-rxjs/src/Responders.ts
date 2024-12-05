@@ -24,7 +24,7 @@ import {
   OnTerminalSubscriber,
   Payload,
   Requestable,
-} from "rsocket-core";
+} from "@sjerman/rsocket-core";
 import { Codec } from "@sjerman/rsocket-messaging";
 import { asyncScheduler, Observable, SchedulerLike } from "rxjs";
 import ObserverToBufferingRSocketSubscriber from "./ObserverToBufferingRSocketSubscriber.js";
