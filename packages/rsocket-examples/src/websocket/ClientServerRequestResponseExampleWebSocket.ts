@@ -48,7 +48,10 @@ async function main() {
             () =>
               responderStream.onNext(
                 {
-                  data: Buffer.concat([Buffer.from("Echo: "), payload.data]),
+                  data: bufferPkg.Buffer.concat([
+                    bufferPkg.Buffer.from("Echo: "),
+                    payload.data,
+                  ]),
                 },
                 true
               ),
@@ -82,7 +85,7 @@ async function main() {
   await new Promise((resolve, reject) =>
     rsocket.requestResponse(
       {
-        data: Buffer.from("Hello World"),
+        data: bufferPkg.Buffer.from("Hello World"),
       },
       {
         onError: (e) => reject(e),

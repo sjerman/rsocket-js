@@ -5,6 +5,9 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {
+      "@sjerman/rsocket-composite-metadata": [
+        "../rsocket-composite-metadata/dist"
+      ],
       "@sjerman/rsocket-messaging": ["../rsocket-messaging/dist"]
     }
   },

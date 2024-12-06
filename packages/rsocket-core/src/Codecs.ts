@@ -53,7 +53,7 @@ export const MAX_VERSION = 0xffff; // uint16
 
 export type Encoding = "ascii" | "base64" | "hex" | "utf8";
 
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 
 /**
  * Mimimum value that would overflow bitwise operators (2^32).
@@ -63,7 +63,7 @@ const BITWISE_OVERFLOW = 0x100000000;
 /**
  * Read a uint24 from a buffer starting at the given offset.
  */
-export function readUInt24BE(buffer: Buffer, offset: number): number {
+export function readUInt24BE(buffer:bufferPkg.Buffer, offset: number): number {
   const val1 = buffer.readUInt8(offset) << 16;
   const val2 = buffer.readUInt8(offset + 1) << 8;
   const val3 = buffer.readUInt8(offset + 2);
@@ -75,7 +75,7 @@ export function readUInt24BE(buffer: Buffer, offset: number): number {
  * offset of the next byte.
  */
 export function writeUInt24BE(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   value: number,
   offset: number
 ): number {
@@ -88,7 +88,7 @@ export function writeUInt24BE(
  * Read a uint64 (technically supports up to 53 bits per JS number
  * representation).
  */
-export function readUInt64BE(buffer: Buffer, offset: number): number {
+export function readUInt64BE(buffer:bufferPkg.Buffer, offset: number): number {
   const high = buffer.readUInt32BE(offset);
   const low = buffer.readUInt32BE(offset + 4);
   return high * BITWISE_OVERFLOW + low;
@@ -99,7 +99,7 @@ export function readUInt64BE(buffer: Buffer, offset: number): number {
  * representation).
  */
 export function writeUInt64BE(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   value: number,
   offset: number
 ): number {
@@ -109,7 +109,7 @@ export function writeUInt64BE(
   return buffer.writeUInt32BE(low, offset); // second half of uint64
 }
 
-type FrameWithPayload = { data: Buffer; flags: number; metadata: Buffer };
+type FrameWithPayload = { data:bufferPkg.Buffer; flags: number; metadata:bufferPkg.Buffer };
 
 /**
  * Frame header is:
@@ -126,7 +126,7 @@ const UINT24_SIZE = 3;
 /**
  * Reads a frame from a buffer that is prefixed with the frame length.
  */
-export function deserializeFrameWithLength(buffer: Buffer): Frame {
+export function deserializeFrameWithLength(buffer:bufferPkg.Buffer): Frame {
   const frameLength = readUInt24BE(buffer, 0);
   return deserializeFrame(buffer.slice(UINT24_SIZE, UINT24_SIZE + frameLength));
 }
@@ -136,7 +136,7 @@ export function deserializeFrameWithLength(buffer: Buffer): Frame {
  * by zero or more bytes of a (partial) subsequent frame, returns an array of
  * the frames and an int representing the buffer offset.
  */
-export function* deserializeFrames(buffer: Buffer): Generator<[Frame, number]> {
+export function* deserializeFrames(buffer:bufferPkg.Buffer): Generator<[Frame, number]> {
   let offset = 0;
   while (offset + UINT24_SIZE < buffer.length) {
     const frameLength = readUInt24BE(buffer, offset);
@@ -156,9 +156,9 @@ export function* deserializeFrames(buffer: Buffer): Generator<[Frame, number]> {
 /**
  * Writes a frame to a buffer with a length prefix.
  */
-export function serializeFrameWithLength(frame: Frame): Buffer {
+export function serializeFrameWithLength(frame: Frame):bufferPkg.Buffer {
   const buffer = serializeFrame(frame);
-  const lengthPrefixed = Buffer.allocUnsafe(buffer.length + UINT24_SIZE);
+  const lengthPrefixed =bufferPkg.Buffer.allocUnsafe(buffer.length + UINT24_SIZE);
   writeUInt24BE(lengthPrefixed, buffer.length, 0);
   buffer.copy(lengthPrefixed, UINT24_SIZE);
   return lengthPrefixed;
@@ -167,7 +167,7 @@ export function serializeFrameWithLength(frame: Frame): Buffer {
 /**
  * Read a frame from the buffer.
  */
-export function deserializeFrame(buffer: Buffer): Frame {
+export function deserializeFrame(buffer:bufferPkg.Buffer): Frame {
   let offset = 0;
   const streamId = buffer.readInt32BE(offset);
   offset += 4;
@@ -221,7 +221,7 @@ export function deserializeFrame(buffer: Buffer): Frame {
 /**
  * Convert the frame to a (binary) buffer.
  */
-export function serializeFrame(frame: Frame): Buffer {
+export function serializeFrame(frame: Frame):bufferPkg.Buffer {
   switch (frame.type) {
     case FrameTypes.SETUP:
       return serializeSetupFrame(frame);
@@ -310,19 +310,19 @@ export function sizeOfFrame(frame: Frame): number {
 const SETUP_FIXED_SIZE = 14;
 const RESUME_TOKEN_LENGTH_SIZE = 2;
 
-function serializeSetupFrame(frame: SetupFrame): Buffer {
+function serializeSetupFrame(frame: SetupFrame):bufferPkg.Buffer {
   const resumeTokenLength =
     frame.resumeToken != null ? frame.resumeToken.byteLength : 0;
   const metadataMimeTypeLength =
     frame.metadataMimeType != null
-      ? Buffer.byteLength(frame.metadataMimeType, "ascii")
+      ?bufferPkg.Buffer.byteLength(frame.metadataMimeType, "ascii")
       : 0;
   const dataMimeTypeLength =
     frame.dataMimeType != null
-      ? Buffer.byteLength(frame.dataMimeType, "ascii")
+      ?bufferPkg.Buffer.byteLength(frame.dataMimeType, "ascii")
       : 0;
   const payloadLength = getPayloadLength(frame);
-  const buffer = Buffer.allocUnsafe(
+  const buffer =bufferPkg.Buffer.allocUnsafe(
     FRAME_HEADER_SIZE +
       SETUP_FIXED_SIZE + //
       (resumeTokenLength ? RESUME_TOKEN_LENGTH_SIZE + resumeTokenLength : 0) +
@@ -372,11 +372,11 @@ function sizeOfSetupFrame(frame: SetupFrame): number {
     frame.resumeToken != null ? frame.resumeToken.byteLength : 0;
   const metadataMimeTypeLength =
     frame.metadataMimeType != null
-      ? Buffer.byteLength(frame.metadataMimeType, "ascii")
+      ?bufferPkg.Buffer.byteLength(frame.metadataMimeType, "ascii")
       : 0;
   const dataMimeTypeLength =
     frame.dataMimeType != null
-      ? Buffer.byteLength(frame.dataMimeType, "ascii")
+      ?bufferPkg.Buffer.byteLength(frame.dataMimeType, "ascii")
       : 0;
   const payloadLength = getPayloadLength(frame);
   return (
@@ -393,7 +393,7 @@ function sizeOfSetupFrame(frame: SetupFrame): number {
  * Reads a SETUP frame from the buffer and returns it.
  */
 function deserializeSetupFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): SetupFrame {
@@ -487,10 +487,10 @@ function deserializeSetupFrame(
  */
 const ERROR_FIXED_SIZE = 4;
 
-function serializeErrorFrame(frame: ErrorFrame): Buffer {
+function serializeErrorFrame(frame: ErrorFrame):bufferPkg.Buffer {
   const messageLength =
-    frame.message != null ? Buffer.byteLength(frame.message, "utf8") : 0;
-  const buffer = Buffer.allocUnsafe(
+    frame.message != null ?bufferPkg.Buffer.byteLength(frame.message, "utf8") : 0;
+  const buffer =bufferPkg.Buffer.allocUnsafe(
     FRAME_HEADER_SIZE + ERROR_FIXED_SIZE + messageLength
   );
   let offset = writeHeader(frame, buffer);
@@ -503,7 +503,7 @@ function serializeErrorFrame(frame: ErrorFrame): Buffer {
 
 function sizeOfErrorFrame(frame: ErrorFrame): number {
   const messageLength =
-    frame.message != null ? Buffer.byteLength(frame.message, "utf8") : 0;
+    frame.message != null ?bufferPkg.Buffer.byteLength(frame.message, "utf8") : 0;
   return FRAME_HEADER_SIZE + ERROR_FIXED_SIZE + messageLength;
 }
 
@@ -511,7 +511,7 @@ function sizeOfErrorFrame(frame: ErrorFrame): number {
  * Reads an ERROR frame from the buffer and returns it.
  */
 function deserializeErrorFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): ErrorFrame {
@@ -548,9 +548,9 @@ function deserializeErrorFrame(
  */
 const KEEPALIVE_FIXED_SIZE = 8;
 
-function serializeKeepAliveFrame(frame: KeepAliveFrame): Buffer {
+function serializeKeepAliveFrame(frame: KeepAliveFrame):bufferPkg.Buffer {
   const dataLength = frame.data != null ? frame.data.byteLength : 0;
-  const buffer = Buffer.allocUnsafe(
+  const buffer =bufferPkg.Buffer.allocUnsafe(
     FRAME_HEADER_SIZE + KEEPALIVE_FIXED_SIZE + dataLength
   );
   let offset = writeHeader(frame, buffer);
@@ -570,7 +570,7 @@ function sizeOfKeepAliveFrame(frame: KeepAliveFrame): number {
  * Reads a KEEPALIVE frame from the buffer and returns it.
  */
 function deserializeKeepAliveFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): KeepAliveFrame {
@@ -604,9 +604,9 @@ function deserializeKeepAliveFrame(
  */
 const LEASE_FIXED_SIZE = 8;
 
-function serializeLeaseFrame(frame: LeaseFrame): Buffer {
+function serializeLeaseFrame(frame: LeaseFrame):bufferPkg.Buffer {
   const metaLength = frame.metadata != null ? frame.metadata.byteLength : 0;
-  const buffer = Buffer.allocUnsafe(
+  const buffer =bufferPkg.Buffer.allocUnsafe(
     FRAME_HEADER_SIZE + LEASE_FIXED_SIZE + metaLength
   );
   let offset = writeHeader(frame, buffer);
@@ -627,7 +627,7 @@ function sizeOfLeaseFrame(frame: LeaseFrame): number {
  * Reads a LEASE frame from the buffer and returns it.
  */
 function deserializeLeaseFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): LeaseFrame {
@@ -664,9 +664,9 @@ function deserializeLeaseFrame(
  */
 function serializeRequestFrame(
   frame: RequestFnfFrame | RequestResponseFrame
-): Buffer {
+):bufferPkg.Buffer {
   const payloadLength = getPayloadLength(frame);
-  const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE + payloadLength);
+  const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE + payloadLength);
   const offset = writeHeader(frame, buffer);
   writePayload(frame, buffer, offset);
   return buffer;
@@ -683,15 +683,15 @@ function sizeOfRequestFrame(
  * Writes a METADATA_PUSH frame to a new buffer and returns
  * it.
  */
-function serializeMetadataPushFrame(frame: MetadataPushFrame): Buffer {
+function serializeMetadataPushFrame(frame: MetadataPushFrame):bufferPkg.Buffer {
   const metadata = frame.metadata;
   if (metadata != null) {
-    const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE + metadata.byteLength);
+    const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE + metadata.byteLength);
     const offset = writeHeader(frame, buffer);
     metadata.copy(buffer, offset);
     return buffer;
   } else {
-    const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE);
+    const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE);
     writeHeader(frame, buffer);
     return buffer;
   }
@@ -704,7 +704,7 @@ function sizeOfMetadataPushFrame(frame: MetadataPushFrame): number {
 }
 
 function deserializeRequestFnfFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): RequestFnfFrame {
@@ -726,7 +726,7 @@ function deserializeRequestFnfFrame(
 }
 
 function deserializeRequestResponseFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): RequestResponseFrame {
@@ -748,7 +748,7 @@ function deserializeRequestResponseFrame(
 }
 
 function deserializeMetadataPushFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): MetadataPushFrame {
@@ -782,9 +782,9 @@ const REQUEST_MANY_HEADER = 4;
 
 function serializeRequestManyFrame(
   frame: RequestStreamFrame | RequestChannelFrame
-): Buffer {
+):bufferPkg.Buffer {
   const payloadLength = getPayloadLength(frame);
-  const buffer = Buffer.allocUnsafe(
+  const buffer =bufferPkg.Buffer.allocUnsafe(
     FRAME_HEADER_SIZE + REQUEST_MANY_HEADER + payloadLength
   );
   let offset = writeHeader(frame, buffer);
@@ -801,7 +801,7 @@ function sizeOfRequestManyFrame(
 }
 
 function deserializeRequestStreamFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): RequestStreamFrame {
@@ -832,7 +832,7 @@ function deserializeRequestStreamFrame(
 }
 
 function deserializeRequestChannelFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): RequestChannelFrame {
@@ -869,8 +869,8 @@ function deserializeRequestChannelFrame(
  */
 const REQUEST_N_HEADER = 4;
 
-function serializeRequestNFrame(frame: RequestNFrame): Buffer {
-  const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE + REQUEST_N_HEADER);
+function serializeRequestNFrame(frame: RequestNFrame):bufferPkg.Buffer {
+  const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE + REQUEST_N_HEADER);
   const offset = writeHeader(frame, buffer);
   buffer.writeUInt32BE(frame.requestN, offset);
   return buffer;
@@ -881,7 +881,7 @@ function sizeOfRequestNFrame(frame: RequestNFrame): number {
 }
 
 function deserializeRequestNFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): RequestNFrame {
@@ -908,8 +908,8 @@ function deserializeRequestNFrame(
 /**
  * Writes a CANCEL frame to a new buffer and returns it.
  */
-function serializeCancelFrame(frame: CancelFrame): Buffer {
-  const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE);
+function serializeCancelFrame(frame: CancelFrame):bufferPkg.Buffer {
+  const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE);
   writeHeader(frame, buffer);
   return buffer;
 }
@@ -919,7 +919,7 @@ function sizeOfCancelFrame(frame: CancelFrame): number {
 }
 
 function deserializeCancelFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): CancelFrame {
@@ -939,9 +939,9 @@ function deserializeCancelFrame(
 /**
  * Writes a PAYLOAD frame to a new buffer and returns it.
  */
-function serializePayloadFrame(frame: PayloadFrame): Buffer {
+function serializePayloadFrame(frame: PayloadFrame):bufferPkg.Buffer {
   const payloadLength = getPayloadLength(frame);
-  const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE + payloadLength);
+  const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE + payloadLength);
   const offset = writeHeader(frame, buffer);
   writePayload(frame, buffer, offset);
   return buffer;
@@ -953,7 +953,7 @@ function sizeOfPayloadFrame(frame: PayloadFrame): number {
 }
 
 function deserializePayloadFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): PayloadFrame {
@@ -986,9 +986,9 @@ function deserializePayloadFrame(
  */
 const RESUME_FIXED_SIZE = 22;
 
-function serializeResumeFrame(frame: ResumeFrame): Buffer {
+function serializeResumeFrame(frame: ResumeFrame):bufferPkg.Buffer {
   const resumeTokenLength = frame.resumeToken.byteLength;
-  const buffer = Buffer.allocUnsafe(
+  const buffer =bufferPkg.Buffer.allocUnsafe(
     FRAME_HEADER_SIZE + RESUME_FIXED_SIZE + resumeTokenLength
   );
   let offset = writeHeader(frame, buffer);
@@ -1007,7 +1007,7 @@ function sizeOfResumeFrame(frame: ResumeFrame): number {
 }
 
 function deserializeResumeFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): ResumeFrame {
@@ -1059,8 +1059,8 @@ function deserializeResumeFrame(
  */
 const RESUME_OK_FIXED_SIZE = 8;
 
-function serializeResumeOkFrame(frame: ResumeOkFrame): Buffer {
-  const buffer = Buffer.allocUnsafe(FRAME_HEADER_SIZE + RESUME_OK_FIXED_SIZE);
+function serializeResumeOkFrame(frame: ResumeOkFrame):bufferPkg.Buffer {
+  const buffer =bufferPkg.Buffer.allocUnsafe(FRAME_HEADER_SIZE + RESUME_OK_FIXED_SIZE);
   const offset = writeHeader(frame, buffer);
   writeUInt64BE(buffer, frame.clientPosition, offset);
   return buffer;
@@ -1071,7 +1071,7 @@ function sizeOfResumeOkFrame(frame: ResumeOkFrame): number {
 }
 
 function deserializeResumeOkFrame(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   streamId: number,
   flags: number
 ): ResumeOkFrame {
@@ -1094,7 +1094,7 @@ function deserializeResumeOkFrame(
 /**
  * Write the header of the frame into the buffer.
  */
-function writeHeader(frame: Frame, buffer: Buffer): number {
+function writeHeader(frame: Frame, buffer:bufferPkg.Buffer): number {
   const offset = buffer.writeInt32BE(frame.streamId, 0);
   // shift frame to high 6 bits, extract lowest 10 bits from flags
   return buffer.writeUInt16BE(
@@ -1127,7 +1127,7 @@ function getPayloadLength(frame: FrameWithPayload): number {
  */
 function writePayload(
   frame: FrameWithPayload,
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   offset: number
 ): void {
   if (Flags.hasMetadata(frame.flags)) {
@@ -1149,7 +1149,7 @@ function writePayload(
  * frame types that MAY have both metadata and data.
  */
 function readPayload(
-  buffer: Buffer,
+  buffer:bufferPkg.Buffer,
   frame: FrameWithPayload,
   offset: number
 ): void {
@@ -1171,14 +1171,14 @@ export class Deserializer {
   /**
    * Read a frame from the buffer.
    */
-  deserializeFrame(buffer: Buffer): Frame {
+  deserializeFrame(buffer:bufferPkg.Buffer): Frame {
     return deserializeFrame(buffer);
   }
 
   /**
    * Reads a frame from a buffer that is prefixed with the frame length.
    */
-  deserializeFrameWithLength(buffer: Buffer): Frame {
+  deserializeFrameWithLength(buffer:bufferPkg.Buffer): Frame {
     return deserializeFrameWithLength(buffer);
   }
 
@@ -1187,7 +1187,7 @@ export class Deserializer {
    * by zero or more bytes of a (partial) subsequent frame, returns an array of
    * the frames and a int representing the buffer offset.
    */
-  deserializeFrames(buffer: Buffer): Generator<[Frame, number]> {
+  deserializeFrames(buffer:bufferPkg.Buffer): Generator<[Frame, number]> {
     return deserializeFrames(buffer);
   }
 }

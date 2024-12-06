@@ -16,8 +16,8 @@ describe("RequestFnFStream Test", () => {
         const mockHandler: OnTerminalSubscriber = mock<OnTerminalSubscriber>();
         const request = new RequestFnFRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           mockHandler,
           0
@@ -28,8 +28,8 @@ describe("RequestFnFStream Test", () => {
         expect(mockStream.frames).toMatchObject([
           {
             type: FrameTypes.REQUEST_FNF,
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
             flags: Flags.METADATA,
             streamId: 1,
           },
@@ -44,11 +44,11 @@ describe("RequestFnFStream Test", () => {
         const mockHandler: OnTerminalSubscriber = mock<OnTerminalSubscriber>();
         const request = new RequestFnFRequesterStream(
           {
-            data: Buffer.concat([
-              Buffer.from("hello world"),
-              Buffer.from("hello world"),
+            data: bufferPkg.Buffer.concat([
+              bufferPkg.Buffer.from("hello world"),
+              bufferPkg.Buffer.from("hello world"),
             ]), // 22 bytes
-            metadata: Buffer.from("world hello"),
+            metadata: bufferPkg.Buffer.from("world hello"),
           },
           mockHandler,
           11
@@ -61,27 +61,27 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-            data: Buffer.from("hello"),
-            metadata: Buffer.from("llo"),
+            data: bufferPkg.Buffer.from("hello"),
+            metadata: bufferPkg.Buffer.from("llo"),
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS,
-            data: Buffer.from(" worldhello"),
+            data: bufferPkg.Buffer.from(" worldhello"),
             metadata: undefined,
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT,
-            data: Buffer.from(" world"),
+            data: bufferPkg.Buffer.from(" world"),
             metadata: undefined,
             streamId: 1,
           },
@@ -95,8 +95,8 @@ describe("RequestFnFStream Test", () => {
       const mockHandler: OnTerminalSubscriber = mock<OnTerminalSubscriber>();
       const request = new RequestFnFRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         mockHandler,
         0
@@ -115,8 +115,8 @@ describe("RequestFnFStream Test", () => {
       const mockLeasManager: LeaseManager = mock<LeaseManager>();
       const request = new RequestFnFRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         mockHandler,
         0,
@@ -135,8 +135,8 @@ describe("RequestFnFStream Test", () => {
       const mockHandler: OnTerminalSubscriber = mock<OnTerminalSubscriber>();
       const request = new RequestFnFRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         mockHandler,
         0
@@ -151,8 +151,8 @@ describe("RequestFnFStream Test", () => {
       const mockHandler: OnTerminalSubscriber = mock<OnTerminalSubscriber>();
       const request = new RequestFnFRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         mockHandler,
         0
@@ -183,15 +183,15 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             streamId: 1,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("World Hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("World Hello"),
           }
         );
 
         expect(mockStream.frames).toMatchObject([]);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("World Hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("World Hello"),
         });
       });
 
@@ -209,16 +209,16 @@ describe("RequestFnFStream Test", () => {
           {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             streamId: 1,
           }
         );
 
         expect(mockStream.frames).toMatchObject([]);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         responder.close();
@@ -242,15 +242,15 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             streamId: 1,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("World Hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("World Hello"),
           }
         );
         sink.onComplete();
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("World Hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("World Hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -273,14 +273,14 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             streamId: 1,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("World Hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("World Hello"),
           }
         );
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("World Hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("World Hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -304,7 +304,7 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           }
         );
@@ -315,14 +315,14 @@ describe("RequestFnFStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("hello"),
-          metadata: Buffer.from("llo"),
+          data: bufferPkg.Buffer.from("hello"),
+          metadata: bufferPkg.Buffer.from("llo"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from(" worldhello"),
+          data: bufferPkg.Buffer.from(" worldhello"),
           metadata: undefined,
           streamId: 1,
         });
@@ -333,18 +333,18 @@ describe("RequestFnFStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from(" world"),
+          data: bufferPkg.Buffer.from(" world"),
           metadata: undefined,
           streamId: 1,
         });
 
         expect(mockStream.frames).toMatchObject([]);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
       });
 
@@ -366,7 +366,7 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           }
         );
@@ -379,7 +379,7 @@ describe("RequestFnFStream Test", () => {
           flags: Flags.NONE,
           streamId: 1,
           extendedType: 1,
-          extendedContent: Buffer.allocUnsafe(0),
+          extendedContent: bufferPkg.Buffer.allocUnsafe(0),
         } as any);
 
         expect(mockStream.frames).toMatchObject([
@@ -410,7 +410,7 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           }
         );
@@ -440,7 +440,7 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           }
         );
@@ -452,14 +452,14 @@ describe("RequestFnFStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("hello"),
-          metadata: Buffer.from("llo"),
+          data: bufferPkg.Buffer.from("hello"),
+          metadata: bufferPkg.Buffer.from("llo"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from(" worldhello"),
+          data: bufferPkg.Buffer.from(" worldhello"),
           metadata: undefined,
           streamId: 1,
         });
@@ -470,7 +470,7 @@ describe("RequestFnFStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from(" world"),
+          data: bufferPkg.Buffer.from(" world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -478,11 +478,11 @@ describe("RequestFnFStream Test", () => {
         sink.onComplete();
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -505,7 +505,7 @@ describe("RequestFnFStream Test", () => {
             type: FrameTypes.REQUEST_FNF,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           }
         );
@@ -517,14 +517,14 @@ describe("RequestFnFStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("hello"),
-          metadata: Buffer.from("llo"),
+          data: bufferPkg.Buffer.from("hello"),
+          metadata: bufferPkg.Buffer.from("llo"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from(" worldhello"),
+          data: bufferPkg.Buffer.from(" worldhello"),
           metadata: undefined,
           streamId: 1,
         });
@@ -535,18 +535,18 @@ describe("RequestFnFStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from(" world"),
+          data: bufferPkg.Buffer.from(" world"),
           metadata: undefined,
           streamId: 1,
         });
 
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();

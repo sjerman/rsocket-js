@@ -1,5 +1,6 @@
 import * as net from "net";
 import sinon from "sinon";
+import bufferPkg from "buffer";
 import { mock } from "jest-mock-extended";
 import EventEmitter from "events";
 import {
@@ -181,8 +182,8 @@ describe("TcpDuplexConnection", function () {
       metadataMimeType: "application/octet-stream",
       keepAlive: 60000,
       lifetime: 300000,
-      metadata: Buffer.from("hello world"),
-      data: Buffer.from("hello world"),
+      metadata: bufferPkg.Buffer.from("hello world"),
+      data: bufferPkg.Buffer.from("hello world"),
       resumeToken: null,
       streamId: 0,
       majorVersion: 1,
@@ -237,8 +238,8 @@ describe("TcpDuplexConnection", function () {
       metadataMimeType: "application/octet-stream",
       keepAlive: 60000,
       lifetime: 300000,
-      metadata: Buffer.from("hello world"),
-      data: Buffer.from("hello world"),
+      metadata: bufferPkg.Buffer.from("hello world"),
+      data: bufferPkg.Buffer.from("hello world"),
       resumeToken: null,
       streamId: 0,
       majorVersion: 1,
@@ -285,18 +286,18 @@ describe("TcpDuplexConnection", function () {
         // act
         socketStub.emit(
           "data",
-          Buffer.concat([
+          bufferPkg.Buffer.concat([
             serializeFrameWithLength({
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT,
-              data: Buffer.from("hello world"),
+              data: bufferPkg.Buffer.from("hello world"),
               metadata: undefined,
               streamId: 1,
             }),
             serializeFrameWithLength({
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT,
-              data: Buffer.from("hello world 2"),
+              data: bufferPkg.Buffer.from("hello world 2"),
               metadata: undefined,
               streamId: 1,
             }),
@@ -330,7 +331,7 @@ describe("TcpDuplexConnection", function () {
           throw new Error("Mock error");
         });
         const onCloseCallback = jest.fn();
-        const data = Buffer.allocUnsafe(0);
+        const data = bufferPkg.Buffer.allocUnsafe(0);
 
         // act
         connection.onClose(onCloseCallback);

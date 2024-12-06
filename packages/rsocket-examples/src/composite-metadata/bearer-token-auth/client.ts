@@ -41,7 +41,7 @@ function makeConnector() {
 }
 
 function makeMetadata(bearerToken?: string, route?: string) {
-  const map = new Map<WellKnownMimeType, Buffer>();
+  const map = new Map<WellKnownMimeType, bufferPkg.Buffer>();
 
   if (bearerToken) {
     map.set(
@@ -60,13 +60,13 @@ function makeMetadata(bearerToken?: string, route?: string) {
 
 async function requestResponse(
   rsocket: RSocket,
-  compositeMetaData: Buffer,
+  compositeMetaData: bufferPkg.Buffer,
   message: string = ""
 ): Promise<Payload> {
   return new Promise((resolve, reject) => {
     return rsocket.requestResponse(
       {
-        data: Buffer.from(message),
+        data: bufferPkg.Buffer.from(message),
         metadata: compositeMetaData,
       },
       {

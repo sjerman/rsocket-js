@@ -59,7 +59,7 @@ function makeServer() {
               let isComplete = sentResponses >= requestedResponses;
               responderStream.onNext(
                 {
-                  data: Buffer.from(new Date()),
+                  data: bufferPkg.Buffer.from(new Date()),
                   metadata: undefined,
                 },
                 isComplete
@@ -118,7 +118,7 @@ async function main() {
     const maxPayloads = 10;
     const requester = rsocket.requestStream(
       {
-        data: Buffer.from("Hello World"),
+        data: bufferPkg.Buffer.from("Hello World"),
       },
       3,
       {

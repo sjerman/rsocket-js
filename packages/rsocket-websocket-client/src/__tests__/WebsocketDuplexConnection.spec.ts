@@ -1,5 +1,5 @@
 import { mock } from "jest-mock-extended";
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 import {
   Demultiplexer,
   Deserializer,
@@ -190,8 +190,8 @@ describe("WebsocketDuplexConnection", function () {
       metadataMimeType: "application/octet-stream",
       keepAlive: 60000,
       lifetime: 300000,
-      metadata: Buffer.from("hello world"),
-      data: Buffer.from("hello world"),
+      metadata: bufferPkg.Buffer.from("hello world"),
+      data: bufferPkg.Buffer.from("hello world"),
       resumeToken: null,
       streamId: 0,
       majorVersion: 1,
@@ -246,8 +246,8 @@ describe("WebsocketDuplexConnection", function () {
       metadataMimeType: "application/octet-stream",
       keepAlive: 60000,
       lifetime: 300000,
-      metadata: Buffer.from("hello world"),
-      data: Buffer.from("hello world"),
+      metadata: bufferPkg.Buffer.from("hello world"),
+      data: bufferPkg.Buffer.from("hello world"),
       resumeToken: null,
       streamId: 0,
       majorVersion: 1,
@@ -299,7 +299,7 @@ describe("WebsocketDuplexConnection", function () {
           throw new Error("Mock error");
         });
         const onCloseCallback = jest.fn();
-        const data = Buffer.allocUnsafe(0).toString();
+        const data = bufferPkg.Buffer.allocUnsafe(0).toString();
 
         // act
         connection.onClose(onCloseCallback);

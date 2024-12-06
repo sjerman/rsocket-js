@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-import { Buffer } from "buffer";
-export class RoutingMetadata implements Iterable<string> {
-  _buffer: Buffer;
+import bufferPkg from "buffer";
 
-  constructor(buffer: Buffer) {
+export class RoutingMetadata implements Iterable<string> {
+  _buffer: bufferPkg.Buffer;
+
+  constructor(buffer: bufferPkg.Buffer) {
     this._buffer = buffer;
   }
 
@@ -32,21 +33,21 @@ export class RoutingMetadata implements Iterable<string> {
 }
 
 /**
- * Encode given set of routes into {@link Buffer} following the <a href="https://github.com/rsocket/rsocket/blob/master/Extensions/Routing.md">Routing Metadata Layout</a>
+ * Encode given set of routes into {@linkbufferPkg.Buffer} following the <a href="https://github.com/rsocket/rsocket/blob/master/Extensions/Routing.md">Routing Metadata Layout</a>
  *
  * @param routes non-empty set of routes
  * @returns {Buffer} with encoded content
  */
-export function encodeRoutes(...routes: string[]): Buffer {
+export function encodeRoutes(...routes: string[]): bufferPkg.Buffer {
   if (routes.length < 1) {
     throw new Error("routes should be non empty array");
   }
 
-  return Buffer.concat(routes.map((route) => encodeRoute(route)));
+  return bufferPkg.Buffer.concat(routes.map((route) => encodeRoute(route)));
 }
 
-export function encodeRoute(route: string): Buffer {
-  const encodedRoute = Buffer.from(route, "utf8");
+export function encodeRoute(route: string): bufferPkg.Buffer {
+  const encodedRoute = bufferPkg.Buffer.from(route, "utf8");
 
   if (encodedRoute.length > 255) {
     throw new Error(
@@ -54,15 +55,15 @@ export function encodeRoute(route: string): Buffer {
     );
   }
 
-  const encodedLength = Buffer.allocUnsafe(1);
+  const encodedLength = bufferPkg.Buffer.allocUnsafe(1);
 
   encodedLength.writeUInt8(encodedRoute.length);
 
-  return Buffer.concat([encodedLength, encodedRoute]);
+  return bufferPkg.Buffer.concat([encodedLength, encodedRoute]);
 }
 
 export function* decodeRoutes(
-  routeMetadataBuffer: Buffer
+  routeMetadataBuffer: bufferPkg.Buffer
 ): Generator<string, void, any> {
   const length = routeMetadataBuffer.byteLength;
   let offset = 0;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 
 import { ErrorCodes, RSocketError } from "./Errors.js";
 import {
@@ -65,12 +65,12 @@ export class RequestStreamRequesterStream
 
   private hasExtension: boolean;
   private extendedType: number;
-  private extendedContent: Buffer;
+  private extendedContent: bufferPkg.Buffer;
   private flags: number;
 
   hasFragments: boolean;
-  data: Buffer;
-  metadata: Buffer;
+  data: bufferPkg.Buffer;
+  metadata: bufferPkg.Buffer;
 
   streamId: number;
 
@@ -262,7 +262,7 @@ export class RequestStreamRequesterStream
 
   onExtension(
     extendedType: number,
-    content: Buffer | null | undefined,
+    content: bufferPkg.Buffer | null | undefined,
     canBeIgnored: boolean
   ): void {
     if (this.done) {
@@ -318,8 +318,8 @@ export class RequestStreamResponderStream
   private done: boolean;
 
   hasFragments: boolean;
-  data: Buffer;
-  metadata: Buffer;
+  data: bufferPkg.Buffer;
+  metadata: bufferPkg.Buffer;
 
   constructor(
     readonly streamId: number,
@@ -502,7 +502,7 @@ export class RequestStreamResponderStream
 
   onExtension(
     extendedType: number,
-    content: Buffer,
+    content: bufferPkg.Buffer,
     canBeIgnored: boolean
   ): void {
     if (this.done) {

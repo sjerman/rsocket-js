@@ -15,7 +15,7 @@
  */
 
 "use strict";
-
+import bufferPkg from "buffer";
 import {
   ApolloLink,
   FetchResult,
@@ -51,12 +51,12 @@ export class RSocketQueryLink extends ApolloLink {
       // per spec query should be a string (https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#example-1)
       query: print(operation.query),
     });
-    const encodedData = Buffer.from(json);
+    const encodedData = bufferPkg.Buffer.from(json);
 
-    const metadata = new Map<WellKnownMimeType, Buffer>();
+    const metadata = new Map<WellKnownMimeType, bufferPkg.Buffer>();
     metadata.set(
       WellKnownMimeType.MESSAGE_RSOCKET_MIMETYPE,
-      Buffer.from(WellKnownMimeType.APPLICATION_JSON.toString())
+      bufferPkg.Buffer.from(WellKnownMimeType.APPLICATION_JSON.toString())
     );
     if (this.options?.route) {
       metadata.set(

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 "use strict";
+import bufferPkg from "buffer";
 
 import {
   Cancellable,
@@ -40,7 +41,7 @@ export default class ObserverToRSocketSubscriber<T>
   }
   onExtension(
     extendedType: number,
-    content: Buffer,
+    content: bufferPkg.Buffer,
     canBeIgnored: boolean
   ): void {}
 

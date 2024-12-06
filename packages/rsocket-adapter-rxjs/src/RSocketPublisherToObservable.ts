@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 "use strict";
-
+import bufferPkg from "buffer";
 import {
   Cancellable,
   OnExtensionSubscriber,
@@ -62,7 +62,7 @@ export default class RSocketPublisherToObservable<T>
 
   onExtension(
     extendedType: number,
-    content: Buffer,
+    content: bufferPkg.Buffer,
     canBeIgnored: boolean
   ): void {}
 

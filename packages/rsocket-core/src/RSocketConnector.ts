@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 import { Closeable, DuplexConnection, Outbound } from ".";
 import {
   ClientServerInputMultiplexerDemultiplexer,
@@ -52,7 +52,7 @@ export type ConnectorConfig = {
   };
   resume?: {
     cacheSize?: number;
-    tokenGenerator: () => Buffer;
+    tokenGenerator: () => bufferPkg.Buffer;
     reconnectFunction: (attempt: number) => Promise<void>;
   };
 };

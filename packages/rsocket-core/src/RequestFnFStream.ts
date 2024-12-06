@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 import { ErrorCodes, RSocketError } from "./Errors.js";
 import { fragment, isFragmentable } from "./Fragmenter.js";
 import {
@@ -144,8 +144,8 @@ export class RequestFnfResponderStream
   private done: boolean;
 
   hasFragments: boolean;
-  data: Buffer;
-  metadata: Buffer;
+  data: bufferPkg.Buffer;
+  metadata: bufferPkg.Buffer;
 
   constructor(
     readonly streamId: number,

@@ -92,7 +92,7 @@ class EchoService {
     const timeout = setTimeout(() => {
       responderStream.onNext(
         {
-          data: Buffer.concat([Buffer.from("Echo: "), payload.data]),
+          data: bufferPkg.Buffer.concat([Buffer.from("Echo: "), payload.data]),
         },
         true
       );
@@ -138,7 +138,7 @@ class AuthService {
       }
       responderStream.onNext(
         {
-          data: Buffer.from(JSON.stringify(userContext)),
+          data: bufferPkg.Buffer.from(JSON.stringify(userContext)),
         },
         true
       );

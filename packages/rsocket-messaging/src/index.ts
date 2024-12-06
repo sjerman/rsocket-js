@@ -15,7 +15,7 @@
  */
 
 "use strict";
-
+import bufferPkg from "buffer";
 import {
   decodeCompositeMetadata,
   decodeRoutes,
@@ -38,23 +38,29 @@ import {
 export interface Codec<D> {
   mimeType: string;
 
-  encode(entity: D): Buffer;
-  decode(buffer: Buffer): D;
+  encode(entity: D): bufferPkg.Buffer;
+  decode(buffer: bufferPkg.Buffer): D;
 }
 
 export interface RequestSpec {
-  metadata(key: string | WellKnownMimeType | number, content: Buffer): this;
+  metadata(
+    key: string | WellKnownMimeType | number,
+    content: bufferPkg.Buffer
+  ): this;
 
   request<TResponseType>(
     exchangeFunction: (
       rsocket: RSocket,
-      metadata: Map<string | number | WellKnownMimeType, Buffer>
+      metadata: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
     ) => TResponseType
   ): TResponseType;
 }
 
 class DefaultRequestSpec implements RequestSpec {
-  private readonly metadatas: Map<string | number | WellKnownMimeType, Buffer>;
+  private readonly metadatas: Map<
+    string | number | WellKnownMimeType,
+    bufferPkg.Buffer
+  >;
 
   constructor(route: string, private readonly rsocket: RSocket) {
     this.metadatas = new Map([
@@ -62,7 +68,10 @@ class DefaultRequestSpec implements RequestSpec {
     ]);
   }
 
-  metadata(key: string | number | WellKnownMimeType, content: Buffer): this {
+  metadata(
+    key: string | number | WellKnownMimeType,
+    content: bufferPkg.Buffer
+  ): this {
     this.metadatas.set(key, content);
     return this;
   }
@@ -70,7 +79,7 @@ class DefaultRequestSpec implements RequestSpec {
   request<RPublisher>(
     exchangeFunction: (
       rsocket: RSocket,
-      metadatas: Map<string | number | WellKnownMimeType, Buffer>
+      metadatas: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
     ) => RPublisher
   ): RPublisher {
     return exchangeFunction(this.rsocket, this.metadatas);
@@ -97,7 +106,7 @@ class WrappingRSocketRequester implements RSocketRequester {
 
 interface TypesRegistry {
   [FrameTypes.METADATA_PUSH]: (
-    metadata: Buffer,
+    metadata: bufferPkg.Buffer,
     responderStream: OnTerminalSubscriber
   ) => void;
   [FrameTypes.REQUEST_FNF]: (
@@ -377,7 +386,10 @@ class DefaultRSocketResponder
     return this;
   }
 
-  metadataPush(metadata: Buffer, responderStream: OnTerminalSubscriber): void {
+  metadataPush(
+    metadata: bufferPkg.Buffer,
+    responderStream: OnTerminalSubscriber
+  ): void {
     const handlers = this.findTypesRegistry(metadata);
 
     if (handlers) {
@@ -393,7 +405,7 @@ class DefaultRSocketResponder
 
   onClose(callback: (error?: Error) => void): void {}
 
-  findTypesRegistry(metadata: Buffer | undefined): TypesRegistry {
+  findTypesRegistry(metadata: bufferPkg.Buffer | undefined): TypesRegistry {
     if (metadata && metadata.length) {
       for (let entry of decodeCompositeMetadata(metadata)) {
         if (
@@ -422,7 +434,7 @@ class DefaultRSocketResponder
   }
   onExtension(
     extendedType: number,
-    content: Buffer,
+    content: bufferPkg.Buffer,
     canBeIgnored: boolean
   ): void {
     // noops

@@ -13,7 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 "use strict";
+
+import bufferPkg from "buffer";
+
 import {
   Cancellable,
   OnExtensionSubscriber,
@@ -88,7 +92,7 @@ class ObserverToBufferingRSocketSubscriber<T>
 
   onExtension(
     extendedType: number,
-    content: Buffer,
+    content: bufferPkg.Buffer,
     canBeIgnored: boolean
   ): void {}
 

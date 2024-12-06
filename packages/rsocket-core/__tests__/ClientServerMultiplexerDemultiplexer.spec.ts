@@ -61,8 +61,8 @@ describe("ClientServerMultiplexerDemultiplexer", function () {
       metadataMimeType: "application/octet-stream",
       keepAlive: 60000,
       lifetime: 300000,
-      metadata: Buffer.from("hello world"),
-      data: Buffer.from("hello world"),
+      metadata: bufferPkg.Buffer.from("hello world"),
+      data: bufferPkg.Buffer.from("hello world"),
       resumeToken: null,
       streamId: 0,
       majorVersion: 1,
@@ -116,14 +116,14 @@ describe("ClientServerMultiplexerDemultiplexer", function () {
         multiplexerDemultiplexer.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("hello world"),
+          data: bufferPkg.Buffer.from("hello world"),
           metadata: undefined,
           streamId: 1,
         });
         multiplexerDemultiplexer.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("hello world 2"),
+          data: bufferPkg.Buffer.from("hello world 2"),
           metadata: undefined,
           streamId: 1,
         });

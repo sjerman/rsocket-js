@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 import { WellKnownAuthType } from "./WellKnownAuthType.js";
 
 const authTypeIdBytesLength = 1;
@@ -29,22 +29,25 @@ type AuthMetadata = {
     identifier: number;
     string: string;
   };
-  payload: Buffer;
+  payload: bufferPkg.Buffer;
 };
 
-type UsernameAndPassword = { username: Buffer; password: Buffer };
+type UsernameAndPassword = {
+  username: bufferPkg.Buffer;
+  password: bufferPkg.Buffer;
+};
 
 /**
- * Encode Auth metadata with the given {@link WellKnownAuthType} and auth payload {@link Buffer}
+ * Encode Auth metadata with the given {@link WellKnownAuthType} and auth payload {@linkbufferPkg.Buffer}
  *
  * @param authType well known auth type
  * @param authPayloadBuffer auth payload buffer
- * @returns encoded {@link WellKnownAuthType} and payload {@link Buffer}
+ * @returns encoded {@link WellKnownAuthType} and payload {@linkbufferPkg.Buffer}
  */
 export function encodeWellKnownAuthMetadata(
   authType: WellKnownAuthType,
-  authPayloadBuffer: Buffer
-): Buffer {
+  authPayloadBuffer: bufferPkg.Buffer
+): bufferPkg.Buffer {
   if (
     authType === WellKnownAuthType.UNPARSEABLE_AUTH_TYPE ||
     authType === WellKnownAuthType.UNKNOWN_RESERVED_AUTH_TYPE
@@ -54,26 +57,26 @@ export function encodeWellKnownAuthMetadata(
     );
   }
 
-  const buffer = Buffer.allocUnsafe(authTypeIdBytesLength);
+  const buffer = bufferPkg.Buffer.allocUnsafe(authTypeIdBytesLength);
 
   // eslint-disable-next-line no-bitwise
   buffer.writeUInt8(authType.identifier | streamMetadataKnownMask);
 
-  return Buffer.concat([buffer, authPayloadBuffer]);
+  return bufferPkg.Buffer.concat([buffer, authPayloadBuffer]);
 }
 
 /**
- * Encode Auth metadata with the given custom auth type {@link string} and auth payload {@link Buffer}
+ * Encode Auth metadata with the given custom auth type {@link string} and auth payload {@linkbufferPkg.Buffer}
  *
  * @param customAuthType custom auth type
  * @param authPayloadBuffer auth payload buffer
- * @returns encoded {@link WellKnownAuthType} and payload {@link Buffer}
+ * @returns encoded {@link WellKnownAuthType} and payload {@linkbufferPkg.Buffer}
  */
 export function encodeCustomAuthMetadata(
   customAuthType: string,
-  authPayloadBuffer: Buffer
-): Buffer {
-  const customAuthTypeBuffer = Buffer.from(customAuthType);
+  authPayloadBuffer: bufferPkg.Buffer
+): bufferPkg.Buffer {
+  const customAuthTypeBuffer = bufferPkg.Buffer.from(customAuthType);
 
   if (customAuthTypeBuffer.byteLength !== customAuthType.length) {
     throw new Error("Custom auth type must be US_ASCII characters only");
@@ -87,7 +90,7 @@ export function encodeCustomAuthMetadata(
     );
   }
 
-  const buffer = Buffer.allocUnsafe(
+  const buffer = bufferPkg.Buffer.allocUnsafe(
     customAuthTypeBytesLength + customAuthTypeBuffer.byteLength
   );
 
@@ -96,7 +99,7 @@ export function encodeCustomAuthMetadata(
   buffer.writeUInt8(customAuthTypeBuffer.byteLength - 1);
   buffer.write(customAuthType, customAuthTypeBytesLength);
 
-  return Buffer.concat([buffer, authPayloadBuffer]);
+  return bufferPkg.Buffer.concat([buffer, authPayloadBuffer]);
 }
 
 /**
@@ -104,14 +107,14 @@ export function encodeCustomAuthMetadata(
  *
  * @param username username
  * @param password password
- * @returns encoded {@link SIMPLE} and given username and password as auth payload {@link Buffer}
+ * @returns encoded {@link SIMPLE} and given username and password as auth payload {@linkbufferPkg.Buffer}
  */
 export function encodeSimpleAuthMetadata(
-  username: string | Buffer,
-  password: string | Buffer
-): Buffer {
-  const usernameBuffer = Buffer.from(username);
-  const passwordBuffer = Buffer.from(password);
+  username: string | bufferPkg.Buffer,
+  password: string | bufferPkg.Buffer
+): bufferPkg.Buffer {
+  const usernameBuffer = bufferPkg.Buffer.from(username);
+  const passwordBuffer = bufferPkg.Buffer.from(password);
   const usernameLength = usernameBuffer.byteLength;
 
   if (usernameLength > 65535) {
@@ -121,7 +124,7 @@ export function encodeSimpleAuthMetadata(
   }
 
   const capacity = authTypeIdBytesLength + usernameLengthBytesLength;
-  const buffer = Buffer.allocUnsafe(capacity);
+  const buffer = bufferPkg.Buffer.allocUnsafe(capacity);
 
   // eslint-disable-next-line no-bitwise
   buffer.writeUInt8(
@@ -129,34 +132,36 @@ export function encodeSimpleAuthMetadata(
   );
   buffer.writeUInt16BE(usernameLength, 1);
 
-  return Buffer.concat([buffer, usernameBuffer, passwordBuffer]);
+  return bufferPkg.Buffer.concat([buffer, usernameBuffer, passwordBuffer]);
 }
 
 /**
  * Encode Bearer Auth metadata with the given token
  *
  * @param token token
- * @returns encoded {@link BEARER} and given token as auth payload {@link Buffer}
+ * @returns encoded {@link BEARER} and given token as auth payload {@linkbufferPkg.Buffer}
  */
-export function encodeBearerAuthMetadata(token: string | Buffer): Buffer {
-  const tokenBuffer = Buffer.from(token);
-  const buffer = Buffer.allocUnsafe(authTypeIdBytesLength);
+export function encodeBearerAuthMetadata(
+  token: string | bufferPkg.Buffer
+): bufferPkg.Buffer {
+  const tokenBuffer = bufferPkg.Buffer.from(token);
+  const buffer = bufferPkg.Buffer.allocUnsafe(authTypeIdBytesLength);
 
   // eslint-disable-next-line no-bitwise
   buffer.writeUInt8(
     WellKnownAuthType.BEARER.identifier | streamMetadataKnownMask
   );
 
-  return Buffer.concat([buffer, tokenBuffer]);
+  return bufferPkg.Buffer.concat([buffer, tokenBuffer]);
 }
 
 /**
- * Decode auth metadata {@link Buffer} into {@link AuthMetadata} object
+ * Decode auth metadata {@linkbufferPkg.Buffer} into {@link AuthMetadata} object
  *
- * @param metadata auth metadata {@link Buffer}
+ * @param metadata auth metadata {@linkbufferPkg.Buffer}
  * @returns decoded {@link AuthMetadata}
  */
-export function decodeAuthMetadata(metadata: Buffer): AuthMetadata {
+export function decodeAuthMetadata(metadata: bufferPkg.Buffer): AuthMetadata {
   if (metadata.byteLength < 1) {
     throw new Error(
       "Unable to decode Auth metadata. Not enough readable bytes"
@@ -210,7 +215,7 @@ export function decodeAuthMetadata(metadata: Buffer): AuthMetadata {
  * @return sliced username and password buffers
  */
 export function decodeSimpleAuthPayload(
-  authPayload: Buffer
+  authPayload: bufferPkg.Buffer
 ): UsernameAndPassword {
   if (authPayload.byteLength < usernameLengthBytesLength) {
     throw new Error(

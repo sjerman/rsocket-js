@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import bufferPkg from "buffer";
 import {
   Closeable,
   Deferred,
@@ -33,7 +33,7 @@ export class TcpDuplexConnection
   implements DuplexConnection, Outbound
 {
   private error: Error;
-  private remainingBuffer: Buffer = Buffer.allocUnsafe(0);
+  private remainingBuffer: bufferPkg.Buffer = bufferPkg.Buffer.allocUnsafe(0);
 
   readonly multiplexerDemultiplexer: Multiplexer & Demultiplexer & FrameHandler;
 
@@ -59,7 +59,7 @@ export class TcpDuplexConnection
     socket.on("close", this.handleClosed);
 
     /**
-     * Emitted when data is received. The argument data will be a Buffer or String. Encoding of data is set by
+     * Emitted when data is received. The argument data will be abufferPkg.Buffer or String. Encoding of data is set by
      * socket.setEncoding(). The data will be lost if there is no listener when a Socket emits a 'data' event.
      */
     socket.on("data", this.handleData);
@@ -119,11 +119,11 @@ export class TcpDuplexConnection
     this.error = error;
   };
 
-  private handleData = (chunks: Buffer): void => {
+  private handleData = (chunks: bufferPkg.Buffer): void => {
     try {
       // Combine partial frame data from previous chunks with the next chunk,
       // then extract any complete frames plus any remaining data.
-      const buffer = Buffer.concat([this.remainingBuffer, chunks]);
+      const buffer = bufferPkg.Buffer.concat([this.remainingBuffer, chunks]);
       let lastOffset = 0;
       const frames = this.deserializer.deserializeFrames(buffer);
       for (const [frame, offset] of frames) {

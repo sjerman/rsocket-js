@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 import { readUInt24BE, writeUInt24BE } from "@sjerman/rsocket-core";
 import { WellKnownMimeType } from "./WellKnownMimeType.js";
 
 export class CompositeMetadata implements Iterable<Entry> {
-  _buffer: Buffer;
+  _buffer: bufferPkg.Buffer;
 
-  constructor(buffer: Buffer) {
+  constructor(buffer: bufferPkg.Buffer) {
     this._buffer = buffer;
   }
 
@@ -35,10 +35,18 @@ export class CompositeMetadata implements Iterable<Entry> {
 
 export function encodeCompositeMetadata(
   metadata:
-    | Map<string | WellKnownMimeType | number, Buffer | (() => Buffer)>
-    | Array<[string | WellKnownMimeType | number, Buffer | (() => Buffer)]>
-): Buffer {
-  let encodedCompositeMetadata = Buffer.allocUnsafe(0);
+    | Map<
+        string | WellKnownMimeType | number,
+        bufferPkg.Buffer | (() => bufferPkg.Buffer)
+      >
+    | Array<
+        [
+          string | WellKnownMimeType | number,
+          bufferPkg.Buffer | (() => bufferPkg.Buffer)
+        ]
+      >
+): bufferPkg.Buffer {
+  let encodedCompositeMetadata = bufferPkg.Buffer.allocUnsafe(0);
   for (const [metadataKey, metadataValue] of metadata) {
     const metadataRealValue =
       typeof metadataValue === "function" ? metadataValue() : metadataValue;
@@ -67,11 +75,11 @@ export function encodeCompositeMetadata(
 
 // see #encodeMetadataHeader(ByteBufAllocator, String, int)
 export function encodeAndAddCustomMetadata(
-  compositeMetaData: Buffer,
+  compositeMetaData: bufferPkg.Buffer,
   customMimeType: string,
-  metadata: Buffer
-): Buffer {
-  return Buffer.concat([
+  metadata: bufferPkg.Buffer
+): bufferPkg.Buffer {
+  return bufferPkg.Buffer.concat([
     compositeMetaData,
     encodeCustomMetadataHeader(customMimeType, metadata.byteLength),
     metadata,
@@ -80,10 +88,10 @@ export function encodeAndAddCustomMetadata(
 
 // see #encodeMetadataHeader(ByteBufAllocator, byte, int)
 export function encodeAndAddWellKnownMetadata(
-  compositeMetadata: Buffer,
+  compositeMetadata: bufferPkg.Buffer,
   knownMimeType: WellKnownMimeType | number,
-  metadata: Buffer
-): Buffer {
+  metadata: bufferPkg.Buffer
+): bufferPkg.Buffer {
   let mimeTypeId: number;
 
   if (Number.isInteger(knownMimeType)) {
@@ -92,7 +100,7 @@ export function encodeAndAddWellKnownMetadata(
     mimeTypeId = (knownMimeType as WellKnownMimeType).identifier;
   }
 
-  return Buffer.concat([
+  return bufferPkg.Buffer.concat([
     compositeMetadata,
     encodeWellKnownMetadataHeader(mimeTypeId, metadata.byteLength),
     metadata,
@@ -100,11 +108,11 @@ export function encodeAndAddWellKnownMetadata(
 }
 
 export function decodeMimeAndContentBuffersSlices(
-  compositeMetadata: Buffer,
+  compositeMetadata: bufferPkg.Buffer,
   entryIndex: number
-): Buffer[] {
+): bufferPkg.Buffer[] {
   const mimeIdOrLength: number = compositeMetadata.readInt8(entryIndex);
-  let mime: Buffer;
+  let mime: bufferPkg.Buffer;
   let toSkip = entryIndex;
   if (
     (mimeIdOrLength & STREAM_METADATA_KNOWN_MASK) ===
@@ -155,7 +163,7 @@ export function decodeMimeAndContentBuffersSlices(
 }
 
 export function decodeMimeTypeFromMimeBuffer(
-  flyweightMimeBuffer: Buffer
+  flyweightMimeBuffer: bufferPkg.Buffer
 ): string {
   if (flyweightMimeBuffer.length < 2) {
     throw new Error("Unable to decode explicit MIME type");
@@ -169,9 +177,11 @@ export function decodeMimeTypeFromMimeBuffer(
 export function encodeCustomMetadataHeader(
   customMime: string,
   metadataLength: number
-): Buffer {
+): bufferPkg.Buffer {
   // allocate one byte + the length of the mimetype
-  const metadataHeader: Buffer = Buffer.allocUnsafe(4 + customMime.length);
+  const metadataHeader: bufferPkg.Buffer = bufferPkg.Buffer.allocUnsafe(
+    4 + customMime.length
+  );
 
   // fill the buffer to clear previous memory
   metadataHeader.fill(0);
@@ -199,8 +209,8 @@ export function encodeCustomMetadataHeader(
 export function encodeWellKnownMetadataHeader(
   mimeType: number,
   metadataLength: number
-): Buffer {
-  const buffer: Buffer = Buffer.allocUnsafe(4);
+): bufferPkg.Buffer {
+  const buffer: bufferPkg.Buffer = bufferPkg.Buffer.allocUnsafe(4);
 
   buffer.writeUInt8(mimeType | STREAM_METADATA_KNOWN_MASK);
   writeUInt24BE(buffer, metadataLength, 1);
@@ -209,7 +219,7 @@ export function encodeWellKnownMetadataHeader(
 }
 
 export function* decodeCompositeMetadata(
-  buffer: Buffer
+  buffer: bufferPkg.Buffer
 ): Generator<Entry, void, any> {
   const length = buffer.byteLength;
   let entryIndex = 0;
@@ -249,7 +259,7 @@ export interface Entry {
    *
    * @return the un-decoded content of the {@link Entry}
    */
-  readonly content: Buffer;
+  readonly content: bufferPkg.Buffer;
 
   /**
    * Returns the MIME type of the entry, if it can be decoded.
@@ -260,11 +270,11 @@ export interface Entry {
 }
 
 export class ExplicitMimeTimeEntry implements Entry {
-  constructor(readonly content: Buffer, readonly type: string) {}
+  constructor(readonly content: bufferPkg.Buffer, readonly type: string) {}
 }
 
 export class ReservedMimeTypeEntry implements Entry {
-  constructor(readonly content: Buffer, readonly type: number) {}
+  constructor(readonly content: bufferPkg.Buffer, readonly type: number) {}
 
   /**
    * Since this entry represents a compressed id that couldn't be decoded, this is
@@ -276,14 +286,17 @@ export class ReservedMimeTypeEntry implements Entry {
 }
 
 export class WellKnownMimeTypeEntry implements Entry {
-  constructor(readonly content: Buffer, readonly type: WellKnownMimeType) {}
+  constructor(
+    readonly content: bufferPkg.Buffer,
+    readonly type: WellKnownMimeType
+  ) {}
 
   get mimeType(): string {
     return this.type.string;
   }
 }
 
-function decodeMimeIdFromMimeBuffer(mimeBuffer: Buffer): number {
+function decodeMimeIdFromMimeBuffer(mimeBuffer: bufferPkg.Buffer): number {
   if (!isWellKnownMimeType(mimeBuffer)) {
     return WellKnownMimeType.UNPARSEABLE_MIME_TYPE.identifier;
   }
@@ -292,8 +305,8 @@ function decodeMimeIdFromMimeBuffer(mimeBuffer: Buffer): number {
 
 function computeNextEntryIndex(
   currentEntryIndex: number,
-  headerSlice: Buffer,
-  contentSlice: Buffer
+  headerSlice: bufferPkg.Buffer,
+  contentSlice: bufferPkg.Buffer
 ): number {
   return (
     currentEntryIndex +
@@ -303,14 +316,14 @@ function computeNextEntryIndex(
   );
 }
 
-function isWellKnownMimeType(header: Buffer): boolean {
+function isWellKnownMimeType(header: bufferPkg.Buffer): boolean {
   return header.byteLength === 1;
 }
 
 const STREAM_METADATA_KNOWN_MASK = 0x80; // 1000 0000
 const STREAM_METADATA_LENGTH_MASK = 0x7f; // 0111 1111
 
-function isAscii(buffer: Buffer, offset: number): boolean {
+function isAscii(buffer: bufferPkg.Buffer, offset: number): boolean {
   let isAscii = true;
   for (let i = offset, length = buffer.length; i < length; i++) {
     if (buffer[i] > 127) {

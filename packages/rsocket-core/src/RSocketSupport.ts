@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 import { ErrorCodes, RSocketError } from "./Errors.js";
 import {
   ErrorFrame,
@@ -173,7 +173,10 @@ export class RSocketRequester implements RSocket {
     return handler;
   }
 
-  metadataPush(metadata: Buffer, responderStream: OnTerminalSubscriber): void {
+  metadataPush(
+    metadata: bufferPkg.Buffer,
+    responderStream: OnTerminalSubscriber
+  ): void {
     throw new Error("Method not implemented.");
   }
 

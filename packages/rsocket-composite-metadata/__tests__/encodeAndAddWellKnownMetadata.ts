@@ -7,9 +7,9 @@ import { readUInt24BE } from "@sjerman/rsocket-core";
 describe("encodeWellKnownMetadataHeader", () => {
   it("encodes the header as per spec when WellKnownMimeType given", () => {
     const metadata = encodeAndAddWellKnownMetadata(
-      Buffer.from([]),
+      bufferPkg.Buffer.from([]),
       WellKnownMimeType.MESSAGE_RSOCKET_MIMETYPE,
-      Buffer.from("test")
+      bufferPkg.Buffer.from("test")
     );
 
     // 122 | 128
@@ -25,10 +25,10 @@ describe("encodeWellKnownMetadataHeader", () => {
 
   it("encodes the header as per spec when identifier given", () => {
     const metadata = encodeAndAddWellKnownMetadata(
-      Buffer.from([]),
+      bufferPkg.Buffer.from([]),
       // MESSAGE_RSOCKET_MIMETYPE
       122,
-      Buffer.from("test")
+      bufferPkg.Buffer.from("test")
     );
 
     // 122 | 128

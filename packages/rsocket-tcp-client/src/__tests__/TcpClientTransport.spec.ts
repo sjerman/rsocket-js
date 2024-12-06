@@ -1,4 +1,5 @@
 import { TcpClientTransport } from "../index";
+import bufferPkg from "buffer";
 import { TcpDuplexConnection } from "../TcpDuplexConnection";
 import * as net from "net";
 import sinon from "sinon";

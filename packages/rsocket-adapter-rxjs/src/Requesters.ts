@@ -15,7 +15,7 @@
  */
 
 "use strict";
-
+import bufferPkg from "buffer";
 import {
   encodeCompositeMetadata,
   WellKnownMimeType,
@@ -48,17 +48,19 @@ export function fireAndForget<TData>(
   inputCodec: Codec<TData>
 ): (
   rsocket: RSocket,
-  metadata?: Map<string | number | WellKnownMimeType, Buffer>
+  metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
 ) => Observable<void> {
   return (
     rsocket: RSocket,
-    metadata?: Map<string | number | WellKnownMimeType, Buffer>
+    metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
   ) => {
     const encodedMetadata = metadata ? encodeCompositeMetadata(metadata) : null;
     return new RSocketPublisherToObservable((s) =>
       rsocket.fireAndForget(
         {
-          data: data ? inputCodec.encode(data) : Buffer.allocUnsafe(0),
+          data: data
+            ? inputCodec.encode(data)
+            : bufferPkg.Buffer.allocUnsafe(0),
           metadata: encodedMetadata,
         },
         s
@@ -73,18 +75,20 @@ export function requestResponse<TData, RData>(
   outputCodec: Codec<RData>
 ): (
   rsocket: RSocket,
-  metadata?: Map<string | number | WellKnownMimeType, Buffer>
+  metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
 ) => Observable<RData> {
   return (
     rsocket: RSocket,
-    metadata?: Map<string | number | WellKnownMimeType, Buffer>
+    metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
   ) => {
     const encodedMetadata = metadata ? encodeCompositeMetadata(metadata) : null;
     return new RSocketPublisherToObservable(
       (s) =>
         rsocket.requestResponse(
           {
-            data: data ? inputCodec.encode(data) : Buffer.allocUnsafe(0),
+            data: data
+              ? inputCodec.encode(data)
+              : bufferPkg.Buffer.allocUnsafe(0),
             metadata: encodedMetadata,
           },
           s
@@ -102,18 +106,20 @@ export function requestStream<TData, RData>(
   scheduler: SchedulerLike = asyncScheduler
 ): (
   rsocket: RSocket,
-  metadata?: Map<string | number | WellKnownMimeType, Buffer>
+  metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
 ) => Observable<RData> {
   return (
     rsocket: RSocket,
-    metadata?: Map<string | number | WellKnownMimeType, Buffer>
+    metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
   ) => {
     const encodedMetadata = metadata ? encodeCompositeMetadata(metadata) : null;
     return new RSocketPublisherToPrefetchingObservable(
       (s, n) =>
         rsocket.requestStream(
           {
-            data: data ? inputCodec.encode(data) : Buffer.allocUnsafe(0),
+            data: data
+              ? inputCodec.encode(data)
+              : bufferPkg.Buffer.allocUnsafe(0),
             metadata: encodedMetadata,
           },
           n,
@@ -134,7 +140,7 @@ export function requestChannel<TData, RData>(
   scheduler: SchedulerLike = asyncScheduler
 ): (
   rsocket: RSocket,
-  metadata?: Map<string | number | WellKnownMimeType, Buffer>
+  metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
 ) => Observable<RData> {
   let once = false;
   const [firstValueObservable, restValuesObservable] = partition(
@@ -156,7 +162,7 @@ export function requestChannel<TData, RData>(
 
   return (
     rsocket: RSocket,
-    metadata?: Map<string | number | WellKnownMimeType, Buffer>
+    metadata?: Map<string | number | WellKnownMimeType, bufferPkg.Buffer>
   ) => {
     const encodedMetadata = metadata ? encodeCompositeMetadata(metadata) : null;
     return firstValueObservable.pipe(

@@ -36,7 +36,7 @@ async function fnf(rsocket: RSocket) {
   return new Promise((resolve, reject) => {
     return rsocket.fireAndForget(
       {
-        data: Buffer.from("Hello World"),
+        data: bufferPkg.Buffer.from("Hello World"),
       },
       {
         onError: (e) => {

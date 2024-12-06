@@ -16,7 +16,7 @@ describe("Codecs", () => {
       Math.pow(2, 24) - 1,
     ].forEach((val) => {
       it("reads/writes 0x" + val.toString(16), () => {
-        const buffer = new Buffer(3);
+        const buffer = newbufferPkg.Buffer(3);
         const offset = writeUInt24BE(buffer, val, 0);
         expect(offset).toBe(3);
         expect(readUInt24BE(buffer, 0)).toBe(val);
@@ -43,7 +43,7 @@ describe("Codecs", () => {
       Number.MAX_SAFE_INTEGER,
     ].forEach((val) => {
       it("writes and reads back 0x" + val.toString(16), () => {
-        const buffer = new Buffer(8);
+        const buffer = newbufferPkg.Buffer(8);
         const offset = writeUInt64BE(buffer, val, 0);
         expect(offset).toBe(8);
         expect(readUInt64BE(buffer, 0)).toBe(val);
@@ -52,7 +52,7 @@ describe("Codecs", () => {
 
     // Ensure that the binary representation is correct
     it("writes values in canonical form", () => {
-      const buffer = new Buffer(8);
+      const buffer = newbufferPkg.Buffer(8);
       buffer.fill(0);
       writeUInt64BE(buffer, Number.MAX_SAFE_INTEGER, 0);
       expect(buffer.toString("hex")).toBe("001fffffffffffff");

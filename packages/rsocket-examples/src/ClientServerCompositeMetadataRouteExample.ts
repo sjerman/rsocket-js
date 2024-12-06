@@ -72,7 +72,10 @@ class EchoService {
       () =>
         responderStream.onNext(
           {
-            data: Buffer.concat([Buffer.from("Echo: "), payload.data]),
+            data: bufferPkg.Buffer.concat([
+              bufferPkg.Buffer.from("Echo: "),
+              payload.data,
+            ]),
           },
           true
         ),
@@ -167,7 +170,7 @@ async function requestResponse(rsocket: RSocket, route?: string) {
   if (route) {
     const encodedRoute = encodeRoute(route);
 
-    const map = new Map<WellKnownMimeType, Buffer>();
+    const map = new Map<WellKnownMimeType, bufferPkg.Buffer>();
     map.set(MESSAGE_RSOCKET_ROUTING, encodedRoute);
     compositeMetaData = encodeCompositeMetadata(map);
   }
@@ -175,7 +178,7 @@ async function requestResponse(rsocket: RSocket, route?: string) {
   return new Promise((resolve, reject) => {
     return rsocket.requestResponse(
       {
-        data: Buffer.from("Hello World"),
+        data: bufferPkg.Buffer.from("Hello World"),
         metadata: compositeMetaData,
       },
       {

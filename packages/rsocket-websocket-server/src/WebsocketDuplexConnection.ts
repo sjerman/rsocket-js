@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import bufferPkg from "buffer";
 import {
   Closeable,
   Deferred,
@@ -106,7 +106,7 @@ export class WebsocketDuplexConnection
     this.close(e.error);
   };
 
-  private handleMessage = (buffer: Buffer): void => {
+  private handleMessage = (buffer: bufferPkg.Buffer): void => {
     try {
       const frame =
         /* this._options.lengthPrefixedFrames

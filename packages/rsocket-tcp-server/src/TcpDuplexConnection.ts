@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import bufferPkg from "buffer";
 import {
   Closeable,
   Deferred,
@@ -33,7 +33,7 @@ export class TcpDuplexConnection
   implements DuplexConnection, Outbound
 {
   private error: Error;
-  private remainingBuffer: Buffer = Buffer.allocUnsafe(0);
+  private remainingBuffer: bufferPkg.Buffer = bufferPkg.Buffer.allocUnsafe(0);
 
   readonly multiplexerDemultiplexer: Multiplexer & Demultiplexer & FrameHandler;
 
@@ -100,11 +100,11 @@ export class TcpDuplexConnection
     this.close(error);
   };
 
-  private handleData = (chunks: Buffer): void => {
+  private handleData = (chunks: bufferPkg.Buffer): void => {
     try {
       // Combine partial frame data from previous chunks with the next chunk,
       // then extract any complete frames plus any remaining data.
-      const buffer = Buffer.concat([this.remainingBuffer, chunks]);
+      const buffer = bufferPkg.Buffer.concat([this.remainingBuffer, chunks]);
       let lastOffset = 0;
       for (const [frame, offset] of deserializeFrames(buffer)) {
         lastOffset = offset;

@@ -15,18 +15,18 @@
  */
 
 import { Payload } from "./RSocket.js";
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 
 export interface FragmentsHolder {
   hasFragments: boolean;
-  data: Buffer | undefined | null;
-  metadata: Buffer | undefined | null;
+  data: bufferPkg.Buffer | undefined | null;
+  metadata: bufferPkg.Buffer | undefined | null;
 }
 
 export function add(
   holder: FragmentsHolder,
-  dataFragment: Buffer,
-  metadataFragment?: Buffer | undefined | null
+  dataFragment: bufferPkg.Buffer,
+  metadataFragment?: bufferPkg.Buffer | undefined | null
 ): boolean {
   if (!holder.hasFragments) {
     holder.hasFragments = true;
@@ -39,10 +39,13 @@ export function add(
 
   // TODO: add validation
   holder.data = holder.data
-    ? Buffer.concat([holder.data, dataFragment])
+    ? bufferPkg.Buffer.concat([holder.data, dataFragment])
     : dataFragment;
   if (holder.metadata && metadataFragment) {
-    holder.metadata = Buffer.concat([holder.metadata, metadataFragment]);
+    holder.metadata = bufferPkg.Buffer.concat([
+      holder.metadata,
+      metadataFragment,
+    ]);
   }
 
   return true;
@@ -50,21 +53,21 @@ export function add(
 
 export function reassemble(
   holder: FragmentsHolder,
-  dataFragment: Buffer,
-  metadataFragment: Buffer | undefined | null
+  dataFragment: bufferPkg.Buffer,
+  metadataFragment: bufferPkg.Buffer | undefined | null
 ): Payload {
   // TODO: add validation
   holder.hasFragments = false;
 
   const data = holder.data
-    ? Buffer.concat([holder.data, dataFragment])
+    ? bufferPkg.Buffer.concat([holder.data, dataFragment])
     : dataFragment;
 
   holder.data = undefined;
 
   if (holder.metadata) {
     const metadata = metadataFragment
-      ? Buffer.concat([holder.metadata, metadataFragment])
+      ? bufferPkg.Buffer.concat([holder.metadata, metadataFragment])
       : holder.metadata;
 
     holder.metadata = undefined;

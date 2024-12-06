@@ -41,7 +41,7 @@ function createRoute(route?: string) {
   if (route) {
     const encodedRoute = encodeRoute(route);
 
-    const map = new Map<WellKnownMimeType, Buffer>();
+    const map = new Map<WellKnownMimeType, bufferPkg.Buffer>();
     map.set(MESSAGE_RSOCKET_ROUTING, encodedRoute);
     compositeMetaData = encodeCompositeMetadata(map);
   }
@@ -53,7 +53,7 @@ async function requestResponse(rsocket: RSocket, route: string, data: string) {
   return new Promise((resolve, reject) => {
     return rsocket.requestResponse(
       {
-        data: Buffer.from(data),
+        data: bufferPkg.Buffer.from(data),
         metadata: createRoute(route),
       },
       {
@@ -93,7 +93,7 @@ async function main() {
     const maxPayloads = 10;
     const requester = rsocket.requestStream(
       {
-        data: Buffer.from("Hello World"),
+        data: bufferPkg.Buffer.from("Hello World"),
         metadata: createRoute("messages.incoming"),
       },
       3,

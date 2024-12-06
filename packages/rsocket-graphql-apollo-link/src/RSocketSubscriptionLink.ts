@@ -15,7 +15,7 @@
  */
 
 "use strict";
-
+import bufferPkg from "buffer";
 import {
   ApolloError,
   ApolloLink,
@@ -56,10 +56,10 @@ class SubscriptionClient {
     operation: SubscribeOperation,
     observer: Observer<ExecutionResult<Data, Extensions>>
   ): () => void {
-    const metadata = new Map<WellKnownMimeType, Buffer>();
+    const metadata = new Map<WellKnownMimeType, bufferPkg.Buffer>();
     metadata.set(
       WellKnownMimeType.MESSAGE_RSOCKET_MIMETYPE,
-      Buffer.from(WellKnownMimeType.APPLICATION_JSON.toString())
+      bufferPkg.Buffer.from(WellKnownMimeType.APPLICATION_JSON.toString())
     );
     if (this.options?.route) {
       metadata.set(
@@ -72,7 +72,7 @@ class SubscriptionClient {
 
     let requestStream = this.client.requestStream(
       {
-        data: Buffer.from(JSON.stringify(operation)),
+        data: bufferPkg.Buffer.from(JSON.stringify(operation)),
         metadata: encodedMetadata,
       },
       MAX_REQUEST_COUNT,

@@ -7,6 +7,7 @@ import {
   Requestable,
   RSocket,
 } from "@sjerman/rsocket-core";
+import bufferPkg from "buffer";
 import {
   ApolloServerBase,
   GraphQLOptions,
@@ -95,7 +96,7 @@ export class RSocketApolloServer<
       next({ graphqlResponse }) {
         responderStream.onNext(
           {
-            data: Buffer.from(graphqlResponse),
+            data: bufferPkg.Buffer.from(graphqlResponse),
           },
           true
         );
@@ -133,7 +134,7 @@ export class RSocketApolloServer<
       next(graphqlResponse) {
         subscriber.onNext(
           {
-            data: Buffer.from(JSON.stringify(graphqlResponse)),
+            data: bufferPkg.Buffer.from(JSON.stringify(graphqlResponse)),
           },
           false
         );

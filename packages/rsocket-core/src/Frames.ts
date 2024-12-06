@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 
 export enum FrameTypes {
   RESERVED = 0x00, // Reserved
@@ -136,8 +136,8 @@ export type Frame =
   | UnsupportedFrame;
 
 export type FrameWithPayload = {
-  data: Buffer | null | undefined;
-  metadata: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
 };
 
 export type CancelFrame = {
@@ -157,7 +157,7 @@ export type ErrorFrame = {
 export type KeepAliveFrame = {
   type: FrameTypes.KEEPALIVE;
   flags: number;
-  data: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
   lastReceivedPosition: number;
   streamId: 0;
 };
@@ -167,29 +167,29 @@ export type LeaseFrame = {
   flags: number;
   ttl: number;
   requestCount: number;
-  metadata: Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   streamId: 0;
 };
 
 export type PayloadFrame = {
   type: FrameTypes.PAYLOAD;
   flags: number;
-  data: Buffer | null | undefined;
-  metadata: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   streamId: number;
 };
 
 export type MetadataPushFrame = {
   type: FrameTypes.METADATA_PUSH;
-  metadata: Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   flags: number;
   streamId: 0;
 };
 
 export type RequestChannelFrame = {
   type: FrameTypes.REQUEST_CHANNEL;
-  data: Buffer | null | undefined;
-  metadata: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   flags: number;
   requestN: number;
   streamId: number;
@@ -197,8 +197,8 @@ export type RequestChannelFrame = {
 
 export type RequestFnfFrame = {
   type: FrameTypes.REQUEST_FNF;
-  data: Buffer | null | undefined;
-  metadata: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   flags: number;
   streamId: number;
 };
@@ -212,16 +212,16 @@ export type RequestNFrame = {
 
 export type RequestResponseFrame = {
   type: FrameTypes.REQUEST_RESPONSE;
-  data: Buffer | null | undefined;
-  metadata: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   flags: number;
   streamId: number;
 };
 
 export type RequestStreamFrame = {
   type: FrameTypes.REQUEST_STREAM;
-  data: Buffer | null | undefined;
-  metadata: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   flags: number;
   requestN: number;
   streamId: number;
@@ -233,7 +233,7 @@ export type ResumeFrame = {
   flags: number;
   majorVersion: number;
   minorVersion: number;
-  resumeToken: Buffer;
+  resumeToken: bufferPkg.Buffer;
   serverPosition: number;
   streamId: 0;
 };
@@ -248,13 +248,13 @@ export type ResumeOkFrame = {
 export type SetupFrame = {
   type: FrameTypes.SETUP;
   dataMimeType: string;
-  data: Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
   flags: number;
   keepAlive: number;
   lifetime: number;
-  metadata: Buffer | null | undefined;
+  metadata: bufferPkg.Buffer | null | undefined;
   metadataMimeType: string;
-  resumeToken: Buffer | null | undefined;
+  resumeToken: bufferPkg.Buffer | null | undefined;
   streamId: 0;
   majorVersion: number;
   minorVersion: number;
@@ -265,7 +265,7 @@ export type ExtFrame = {
   flags: number;
   streamId: number;
   extendedType: number;
-  extendedContent?: Buffer;
+  extendedContent?: bufferPkg.Buffer;
 };
 
 export type UnsupportedFrame = {

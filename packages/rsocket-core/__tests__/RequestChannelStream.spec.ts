@@ -35,8 +35,8 @@ describe("RequestChannelStream Test", () => {
           >();
           const request = new RequestChannelRequesterStream(
             {
-              data: Buffer.from("Hello"),
-              metadata: Buffer.from(" World"),
+              data: bufferPkg.Buffer.from("Hello"),
+              metadata: bufferPkg.Buffer.from(" World"),
             },
             state,
             mockHandler,
@@ -49,8 +49,8 @@ describe("RequestChannelStream Test", () => {
           expect(mockStream.frames).toMatchObject([
             {
               type: FrameTypes.REQUEST_CHANNEL,
-              data: Buffer.from("Hello"),
-              metadata: Buffer.from(" World"),
+              data: bufferPkg.Buffer.from("Hello"),
+              metadata: bufferPkg.Buffer.from(" World"),
               flags: Flags.METADATA | (state ? Flags.COMPLETE : Flags.NONE),
               streamId: 1,
               requestN: 1,
@@ -98,8 +98,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           true,
           mockHandler,
@@ -113,8 +113,8 @@ describe("RequestChannelStream Test", () => {
         expect(mockStream.frames).toMatchObject([
           {
             type: FrameTypes.REQUEST_CHANNEL,
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
             flags: Flags.METADATA | Flags.COMPLETE,
             requestN: 1,
             streamId: 1,
@@ -153,8 +153,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           false,
           mockHandler,
@@ -167,8 +167,8 @@ describe("RequestChannelStream Test", () => {
         expect(mockStream.handler).toBe(request);
         expect(mockStream.frames.pop()).toMatchObject({
           type: FrameTypes.REQUEST_CHANNEL,
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
           flags: Flags.METADATA,
           requestN: 1,
           streamId: 1,
@@ -216,8 +216,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           false,
           mockHandler,
@@ -230,8 +230,8 @@ describe("RequestChannelStream Test", () => {
 
         expect(mockStream.frames.pop()).toMatchObject({
           type: FrameTypes.REQUEST_CHANNEL,
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
           flags: Flags.METADATA,
           streamId: 1,
           requestN: 3,
@@ -245,8 +245,8 @@ describe("RequestChannelStream Test", () => {
         request.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.METADATA,
-          data: Buffer.from("hey"),
-          metadata: Buffer.from("there"),
+          data: bufferPkg.Buffer.from("hey"),
+          metadata: bufferPkg.Buffer.from("there"),
           streamId: 1,
         });
 
@@ -286,8 +286,8 @@ describe("RequestChannelStream Test", () => {
         expect(mockHandler.onError).not.toBeCalled();
         expect(mockHandler.onNext).toBeCalledWith(
           {
-            data: Buffer.from("hey"),
-            metadata: Buffer.from("there"),
+            data: bufferPkg.Buffer.from("hey"),
+            metadata: bufferPkg.Buffer.from("there"),
           },
           false
         );
@@ -310,8 +310,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           false,
           mockHandler,
@@ -324,8 +324,8 @@ describe("RequestChannelStream Test", () => {
         expect(mockStream.frames).toMatchObject([
           {
             type: FrameTypes.REQUEST_CHANNEL,
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
             flags: Flags.METADATA,
             streamId: 1,
             requestN: 1,
@@ -370,8 +370,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           false,
           mockHandler,
@@ -383,8 +383,8 @@ describe("RequestChannelStream Test", () => {
 
         expect(mockStream.frames.pop()).toMatchObject({
           type: FrameTypes.REQUEST_CHANNEL,
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
           flags: Flags.METADATA,
           streamId: 1,
           requestN: 1,
@@ -428,8 +428,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           false,
           mockHandler,
@@ -442,8 +442,8 @@ describe("RequestChannelStream Test", () => {
         expect(mockStream.frames).toMatchObject([
           {
             type: FrameTypes.REQUEST_CHANNEL,
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
             flags: Flags.METADATA,
             streamId: 1,
           },
@@ -501,8 +501,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           false,
           mockHandler,
@@ -514,8 +514,8 @@ describe("RequestChannelStream Test", () => {
 
         expect(mockStream.frames.pop()).toMatchObject({
           type: FrameTypes.REQUEST_CHANNEL,
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
           flags: Flags.METADATA,
           streamId: 1,
           requestN: 1,
@@ -559,11 +559,11 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.concat([
-              Buffer.from("hello world"),
-              Buffer.from("hello world"),
+            data: bufferPkg.Buffer.concat([
+              bufferPkg.Buffer.from("hello world"),
+              bufferPkg.Buffer.from("hello world"),
             ]), // 22 bytes
-            metadata: Buffer.from("world hello"),
+            metadata: bufferPkg.Buffer.from("world hello"),
           },
           false,
           mockHandler,
@@ -578,28 +578,28 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-            data: Buffer.from("he"),
-            metadata: Buffer.from(" hello"),
+            data: bufferPkg.Buffer.from("he"),
+            metadata: bufferPkg.Buffer.from(" hello"),
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS,
-            data: Buffer.from("llo worldhe"),
+            data: bufferPkg.Buffer.from("llo worldhe"),
             metadata: undefined,
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT,
-            data: Buffer.from("llo world"),
+            data: bufferPkg.Buffer.from("llo world"),
             metadata: undefined,
             streamId: 1,
           },
@@ -614,27 +614,27 @@ describe("RequestChannelStream Test", () => {
           type: FrameTypes.PAYLOAD,
           flags: Flags.FOLLOWS | Flags.METADATA,
           data: undefined,
-          metadata: Buffer.from("world he"),
+          metadata: bufferPkg.Buffer.from("world he"),
           streamId: 1,
         });
         request.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("hello"),
-          metadata: Buffer.from("llo"),
+          data: bufferPkg.Buffer.from("hello"),
+          metadata: bufferPkg.Buffer.from("llo"),
           streamId: 1,
         });
         request.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from(" worldhello"),
+          data: bufferPkg.Buffer.from(" worldhello"),
           metadata: undefined,
           streamId: 1,
         });
         request.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from(" world"),
+          data: bufferPkg.Buffer.from(" world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -655,11 +655,11 @@ describe("RequestChannelStream Test", () => {
         expect(
           (mockHandler.onNext as jest.Mock).mock.calls[0][0]
         ).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
         expect(mockHandler.onError).not.toBeCalled();
       });
@@ -679,11 +679,11 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.concat([
-              Buffer.from("hello world"),
-              Buffer.from("hello world"),
+            data: bufferPkg.Buffer.concat([
+              bufferPkg.Buffer.from("hello world"),
+              bufferPkg.Buffer.from("hello world"),
             ]), // 22 bytes
-            metadata: Buffer.from("world hello"),
+            metadata: bufferPkg.Buffer.from("world hello"),
           },
           false,
           mockHandler,
@@ -698,28 +698,28 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-            data: Buffer.from("he"),
-            metadata: Buffer.from(" hello"),
+            data: bufferPkg.Buffer.from("he"),
+            metadata: bufferPkg.Buffer.from(" hello"),
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS,
-            data: Buffer.from("llo worldhe"),
+            data: bufferPkg.Buffer.from("llo worldhe"),
             metadata: undefined,
             streamId: 1,
           },
           {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT,
-            data: Buffer.from("llo world"),
+            data: bufferPkg.Buffer.from("llo world"),
             metadata: undefined,
             streamId: 1,
           },
@@ -734,20 +734,20 @@ describe("RequestChannelStream Test", () => {
           type: FrameTypes.PAYLOAD,
           flags: Flags.FOLLOWS | Flags.METADATA,
           data: undefined,
-          metadata: Buffer.from("world he"),
+          metadata: bufferPkg.Buffer.from("world he"),
           streamId: 1,
         });
         request.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("hello"),
-          metadata: Buffer.from("llo"),
+          data: bufferPkg.Buffer.from("hello"),
+          metadata: bufferPkg.Buffer.from("llo"),
           streamId: 1,
         });
         request.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from(" worldhello"),
+          data: bufferPkg.Buffer.from(" worldhello"),
           metadata: undefined,
           streamId: 1,
         });
@@ -785,8 +785,8 @@ describe("RequestChannelStream Test", () => {
       >();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -820,8 +820,8 @@ describe("RequestChannelStream Test", () => {
       const mockLeasManager: LeaseManager = mock<LeaseManager>();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -854,8 +854,8 @@ describe("RequestChannelStream Test", () => {
       >();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -882,8 +882,8 @@ describe("RequestChannelStream Test", () => {
       >();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -914,8 +914,8 @@ describe("RequestChannelStream Test", () => {
       >();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -932,8 +932,8 @@ describe("RequestChannelStream Test", () => {
         streamId: 1,
         flags: Flags.METADATA,
         requestN: 1,
-        data: Buffer.from("Hello"),
-        metadata: Buffer.from(" World"),
+        data: bufferPkg.Buffer.from("Hello"),
+        metadata: bufferPkg.Buffer.from(" World"),
       });
       expect(mockStream.frames.shift()).toMatchObject({
         type: FrameTypes.CANCEL,
@@ -942,7 +942,7 @@ describe("RequestChannelStream Test", () => {
       });
       request.onNext(
         {
-          data: Buffer.allocUnsafe(0),
+          data: bufferPkg.Buffer.allocUnsafe(0),
           metadata: null,
         },
         false
@@ -970,8 +970,8 @@ describe("RequestChannelStream Test", () => {
       >();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -985,8 +985,8 @@ describe("RequestChannelStream Test", () => {
         streamId: 1,
         flags: Flags.METADATA,
         requestN: 1,
-        data: Buffer.from("Hello"),
-        metadata: Buffer.from(" World"),
+        data: bufferPkg.Buffer.from("Hello"),
+        metadata: bufferPkg.Buffer.from(" World"),
       });
       request.handle({
         type: FrameTypes.PAYLOAD,
@@ -1005,7 +1005,7 @@ describe("RequestChannelStream Test", () => {
       expect(mockStream.handler).toBeUndefined();
       request.onNext(
         {
-          data: Buffer.allocUnsafe(0),
+          data: bufferPkg.Buffer.allocUnsafe(0),
           metadata: null,
         },
         false
@@ -1030,8 +1030,8 @@ describe("RequestChannelStream Test", () => {
       >();
       const request = new RequestChannelRequesterStream(
         {
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         },
         false,
         mockHandler,
@@ -1045,8 +1045,8 @@ describe("RequestChannelStream Test", () => {
         streamId: 1,
         flags: Flags.METADATA,
         requestN: 1,
-        data: Buffer.from("Hello"),
-        metadata: Buffer.from(" World"),
+        data: bufferPkg.Buffer.from("Hello"),
+        metadata: bufferPkg.Buffer.from(" World"),
       });
 
       request.handle({
@@ -1066,7 +1066,7 @@ describe("RequestChannelStream Test", () => {
       expect(mockStream.handler).toBeUndefined();
       request.onNext(
         {
-          data: Buffer.allocUnsafe(0),
+          data: bufferPkg.Buffer.allocUnsafe(0),
           metadata: null,
         },
         false
@@ -1092,8 +1092,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           isCompleted,
           mockHandler,
@@ -1107,8 +1107,8 @@ describe("RequestChannelStream Test", () => {
           streamId: 1,
           flags: Flags.METADATA | (isCompleted ? Flags.COMPLETE : Flags.NONE),
           requestN: 1,
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         });
         request.handle({
           type: FrameTypes.ERROR,
@@ -1120,7 +1120,7 @@ describe("RequestChannelStream Test", () => {
         request.cancel();
         request.onNext(
           {
-            data: Buffer.allocUnsafe(0),
+            data: bufferPkg.Buffer.allocUnsafe(0),
             metadata: null,
           },
           false
@@ -1146,8 +1146,8 @@ describe("RequestChannelStream Test", () => {
         >();
         const request = new RequestChannelRequesterStream(
           {
-            data: Buffer.from("Hello"),
-            metadata: Buffer.from(" World"),
+            data: bufferPkg.Buffer.from("Hello"),
+            metadata: bufferPkg.Buffer.from(" World"),
           },
           isCompleted,
           mockHandler,
@@ -1161,8 +1161,8 @@ describe("RequestChannelStream Test", () => {
           streamId: 1,
           flags: Flags.METADATA | (isCompleted ? Flags.COMPLETE : Flags.NONE),
           requestN: 1,
-          data: Buffer.from("Hello"),
-          metadata: Buffer.from(" World"),
+          data: bufferPkg.Buffer.from("Hello"),
+          metadata: bufferPkg.Buffer.from(" World"),
         });
         request.handle({
           type: FrameTypes.ERROR,
@@ -1174,7 +1174,7 @@ describe("RequestChannelStream Test", () => {
         request.cancel();
         request.onNext(
           {
-            data: Buffer.allocUnsafe(0),
+            data: bufferPkg.Buffer.allocUnsafe(0),
             metadata: null,
           },
           false
@@ -1226,8 +1226,8 @@ describe("RequestChannelStream Test", () => {
             streamId: 1,
             requestN: 10,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("World Hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("World Hello"),
           }
         );
 
@@ -1254,15 +1254,15 @@ describe("RequestChannelStream Test", () => {
           },
         ]);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("World Hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("World Hello"),
         });
 
         responder.handle({
           type: FrameTypes.PAYLOAD,
           streamId: 1,
           flags: Flags.NEXT,
-          data: Buffer.from("test"),
+          data: bufferPkg.Buffer.from("test"),
           metadata: null,
         });
 
@@ -1279,7 +1279,7 @@ describe("RequestChannelStream Test", () => {
         expect(mockHandler.onComplete).toBeCalled();
         expect((mockHandler.onNext as jest.Mock).mock.calls[0]).toMatchObject([
           {
-            data: Buffer.from("test"),
+            data: bufferPkg.Buffer.from("test"),
             metadata: null,
           },
           false,
@@ -1320,8 +1320,8 @@ describe("RequestChannelStream Test", () => {
             streamId: 1,
             requestN: 2,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("World Hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("World Hello"),
           }
         );
 
@@ -1329,15 +1329,15 @@ describe("RequestChannelStream Test", () => {
 
         sink.onNext(
           {
-            data: Buffer.from("response1"),
-            metadata: Buffer.from("response-meta1"),
+            data: bufferPkg.Buffer.from("response1"),
+            metadata: bufferPkg.Buffer.from("response-meta1"),
           },
           false
         );
         sink.onNext(
           {
-            data: Buffer.from("response2"),
-            metadata: Buffer.from("response-meta2"),
+            data: bufferPkg.Buffer.from("response2"),
+            metadata: bufferPkg.Buffer.from("response-meta2"),
           },
           true
         ); // sends on complete which has to be ignored
@@ -1347,35 +1347,35 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.PAYLOAD,
             streamId: 1,
             flags: Flags.NEXT | Flags.METADATA,
-            data: Buffer.from("response1"),
-            metadata: Buffer.from("response-meta1"),
+            data: bufferPkg.Buffer.from("response1"),
+            metadata: bufferPkg.Buffer.from("response-meta1"),
           },
           {
             type: FrameTypes.PAYLOAD,
             streamId: 1,
             flags: Flags.NEXT | Flags.METADATA | Flags.COMPLETE,
-            data: Buffer.from("response2"),
-            metadata: Buffer.from("response-meta2"),
+            data: bufferPkg.Buffer.from("response2"),
+            metadata: bufferPkg.Buffer.from("response-meta2"),
           },
         ]);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("World Hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("World Hello"),
         });
 
         responder.handle({
           type: FrameTypes.PAYLOAD,
           streamId: 1,
           flags: Flags.NEXT | Flags.METADATA | Flags.COMPLETE,
-          data: Buffer.from("response2"),
-          metadata: Buffer.from("response-meta2"),
+          data: bufferPkg.Buffer.from("response2"),
+          metadata: bufferPkg.Buffer.from("response-meta2"),
         });
 
         expect(mockStream.handler).toBeUndefined();
         expect(mockHandler.onNext.mock.calls[0]).toMatchObject([
           {
-            data: Buffer.from("response2"),
-            metadata: Buffer.from("response-meta2"),
+            data: bufferPkg.Buffer.from("response2"),
+            metadata: bufferPkg.Buffer.from("response-meta2"),
           },
           true,
         ]);
@@ -1417,8 +1417,8 @@ describe("RequestChannelStream Test", () => {
             streamId: 1,
             requestN: 1,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("World Hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("World Hello"),
           }
         );
 
@@ -1437,8 +1437,8 @@ describe("RequestChannelStream Test", () => {
           },
         ]);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("World Hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("World Hello"),
         });
 
         expect(requested).toBe(1);
@@ -1476,8 +1476,8 @@ describe("RequestChannelStream Test", () => {
           {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.METADATA,
-            data: Buffer.from("Hello World"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("Hello World"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             streamId: 1,
             requestN: 1,
           }
@@ -1486,15 +1486,15 @@ describe("RequestChannelStream Test", () => {
         expect(mockStream.handler).toBe(responder);
         expect(mockStream.frames).toMatchObject([]);
         expect(payload).toMatchObject({
-          data: Buffer.from("Hello World"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("Hello World"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         mockStream.disconnect(responder);
         responder.close();
         sink.onNext(
           {
-            data: Buffer.alloc(0),
+            data: bufferPkg.Buffer.alloc(0),
           },
           true
         );
@@ -1525,8 +1525,8 @@ describe("RequestChannelStream Test", () => {
           {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.METADATA,
-            data: Buffer.from("hello world"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("hello world"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             requestN: 1,
             streamId: 1,
           }
@@ -1542,8 +1542,8 @@ describe("RequestChannelStream Test", () => {
         sink.onComplete();
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("hello world"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("hello world"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -1568,8 +1568,8 @@ describe("RequestChannelStream Test", () => {
           {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.METADATA,
-            data: Buffer.from("hello world"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("hello world"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             streamId: 1,
             requestN: 1,
           }
@@ -1589,8 +1589,8 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("hello world"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("hello world"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -1616,8 +1616,8 @@ describe("RequestChannelStream Test", () => {
           {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.METADATA,
-            data: Buffer.from("hello world"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("hello world"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             streamId: 1,
             requestN: 1,
           }
@@ -1637,8 +1637,8 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("hello world"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("hello world"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -1664,7 +1664,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           }
@@ -1677,14 +1677,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -1695,7 +1695,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.COMPLETE,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -1709,11 +1709,11 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -1740,8 +1740,8 @@ describe("RequestChannelStream Test", () => {
           {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.METADATA | Flags.COMPLETE,
-            data: Buffer.from("hello world"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("hello world"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             streamId: 1,
             requestN: 1,
           }
@@ -1754,8 +1754,8 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("hello world"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("hello world"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -1789,8 +1789,8 @@ describe("RequestChannelStream Test", () => {
           {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.METADATA | Flags.COMPLETE,
-            data: Buffer.from("hello world"),
-            metadata: Buffer.from("world hello"),
+            data: bufferPkg.Buffer.from("hello world"),
+            metadata: bufferPkg.Buffer.from("world hello"),
             streamId: 1,
             requestN: 1,
           }
@@ -1803,8 +1803,8 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.from("hello world"),
-          metadata: Buffer.from("world hello"),
+          data: bufferPkg.Buffer.from("hello world"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -1846,7 +1846,7 @@ describe("RequestChannelStream Test", () => {
               type: FrameTypes.REQUEST_CHANNEL,
               flags: Flags.FOLLOWS | Flags.METADATA,
               data: undefined,
-              metadata: Buffer.from("world"),
+              metadata: bufferPkg.Buffer.from("world"),
               streamId: 1,
               requestN: 1,
             }
@@ -1859,14 +1859,14 @@ describe("RequestChannelStream Test", () => {
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-            data: Buffer.from("he"),
-            metadata: Buffer.from(" hello"),
+            data: bufferPkg.Buffer.from("he"),
+            metadata: bufferPkg.Buffer.from(" hello"),
             streamId: 1,
           });
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS,
-            data: Buffer.from("llo worldhe"),
+            data: bufferPkg.Buffer.from("llo worldhe"),
             metadata: undefined,
             streamId: 1,
           });
@@ -1878,7 +1878,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.PAYLOAD,
             flags:
               Flags.NEXT | (shouldBeCompleted ? Flags.COMPLETE : Flags.NONE),
-            data: Buffer.from("llo world"),
+            data: bufferPkg.Buffer.from("llo world"),
             metadata: undefined,
             streamId: 1,
           });
@@ -1904,11 +1904,11 @@ describe("RequestChannelStream Test", () => {
             },
           ]);
           expect(payload).toMatchObject({
-            data: Buffer.concat([
-              Buffer.from("hello world"),
-              Buffer.from("hello world"),
+            data: bufferPkg.Buffer.concat([
+              bufferPkg.Buffer.from("hello world"),
+              bufferPkg.Buffer.from("hello world"),
             ]), // 22 bytes
-            metadata: Buffer.from("world hello"),
+            metadata: bufferPkg.Buffer.from("world hello"),
           });
         });
       }
@@ -1941,7 +1941,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           }
@@ -1954,14 +1954,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -1972,7 +1972,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -1993,11 +1993,11 @@ describe("RequestChannelStream Test", () => {
           },
         ]);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
       });
 
@@ -2024,25 +2024,25 @@ describe("RequestChannelStream Test", () => {
               requested = requestN;
               terminator.onNext(
                 {
-                  data: Buffer.concat([
-                    Buffer.from("hello world"),
-                    Buffer.from("hello world"),
+                  data: bufferPkg.Buffer.concat([
+                    bufferPkg.Buffer.from("hello world"),
+                    bufferPkg.Buffer.from("hello world"),
                   ]), // 22 bytes
-                  metadata: Buffer.from("world hello"),
+                  metadata: bufferPkg.Buffer.from("world hello"),
                 },
                 false
               );
 
               terminator.onNext(
                 {
-                  data: Buffer.from("hello"),
+                  data: bufferPkg.Buffer.from("hello"),
                 },
                 false
               );
 
               terminator.onNext(
                 {
-                  data: Buffer.from("world"),
+                  data: bufferPkg.Buffer.from("world"),
                 },
                 true
               );
@@ -2052,7 +2052,7 @@ describe("RequestChannelStream Test", () => {
               type: FrameTypes.REQUEST_CHANNEL,
               flags: Flags.FOLLOWS | Flags.METADATA,
               data: undefined,
-              metadata: Buffer.from("world he"),
+              metadata: bufferPkg.Buffer.from("world he"),
               streamId: 1,
               requestN: 1,
             }
@@ -2065,14 +2065,14 @@ describe("RequestChannelStream Test", () => {
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-            data: Buffer.from("hello"),
-            metadata: Buffer.from("llo"),
+            data: bufferPkg.Buffer.from("hello"),
+            metadata: bufferPkg.Buffer.from("llo"),
             streamId: 1,
           });
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS,
-            data: Buffer.from(" worldhello"),
+            data: bufferPkg.Buffer.from(" worldhello"),
             metadata: undefined,
             streamId: 1,
           });
@@ -2083,7 +2083,7 @@ describe("RequestChannelStream Test", () => {
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT,
-            data: Buffer.from(" world"),
+            data: bufferPkg.Buffer.from(" world"),
             metadata: undefined,
             streamId: 1,
           });
@@ -2093,41 +2093,41 @@ describe("RequestChannelStream Test", () => {
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
               data: undefined,
-              metadata: Buffer.from("world he"),
+              metadata: bufferPkg.Buffer.from("world he"),
               streamId: 1,
             },
             {
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-              data: Buffer.from("hello"),
-              metadata: Buffer.from("llo"),
+              data: bufferPkg.Buffer.from("hello"),
+              metadata: bufferPkg.Buffer.from("llo"),
               streamId: 1,
             },
             {
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT | Flags.FOLLOWS,
-              data: Buffer.from(" worldhello"),
+              data: bufferPkg.Buffer.from(" worldhello"),
               metadata: undefined,
               streamId: 1,
             },
             {
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT,
-              data: Buffer.from(" world"),
+              data: bufferPkg.Buffer.from(" world"),
               metadata: undefined,
               streamId: 1,
             },
             {
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT,
-              data: Buffer.from("hello"),
+              data: bufferPkg.Buffer.from("hello"),
               metadata: undefined,
               streamId: 1,
             },
             {
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT | Flags.COMPLETE,
-              data: Buffer.from("world"),
+              data: bufferPkg.Buffer.from("world"),
               metadata: undefined,
               streamId: 1,
             },
@@ -2137,27 +2137,27 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
           });
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-            data: Buffer.from("hello"),
-            metadata: Buffer.from("llo"),
+            data: bufferPkg.Buffer.from("hello"),
+            metadata: bufferPkg.Buffer.from("llo"),
             streamId: 1,
           });
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT | Flags.FOLLOWS,
-            data: Buffer.from(" worldhello"),
+            data: bufferPkg.Buffer.from(" worldhello"),
             metadata: null,
             streamId: 1,
           });
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT,
-            data: Buffer.from(" world"),
+            data: bufferPkg.Buffer.from(" world"),
             metadata: null,
             streamId: 1,
           });
@@ -2165,7 +2165,7 @@ describe("RequestChannelStream Test", () => {
           responder.handle({
             type: FrameTypes.PAYLOAD,
             flags: Flags.NEXT,
-            data: Buffer.from("hello"),
+            data: bufferPkg.Buffer.from("hello"),
             metadata: null,
             streamId: 1,
           });
@@ -2174,7 +2174,7 @@ describe("RequestChannelStream Test", () => {
             responder.handle({
               type: FrameTypes.PAYLOAD,
               flags: Flags.NEXT | Flags.COMPLETE,
-              data: Buffer.from("world"),
+              data: bufferPkg.Buffer.from("world"),
               metadata: null,
               streamId: 1,
             });
@@ -2189,26 +2189,26 @@ describe("RequestChannelStream Test", () => {
           }
 
           expect(payload).toMatchObject({
-            data: Buffer.concat([
-              Buffer.from("hello world"),
-              Buffer.from("hello world"),
+            data: bufferPkg.Buffer.concat([
+              bufferPkg.Buffer.from("hello world"),
+              bufferPkg.Buffer.from("hello world"),
             ]), // 22 bytes
-            metadata: Buffer.from("world hello"),
+            metadata: bufferPkg.Buffer.from("world hello"),
           });
 
           expect(mockHandler.onNext.mock.calls[0]).toMatchObject([
             {
-              data: Buffer.concat([
-                Buffer.from("hello world"),
-                Buffer.from("hello world"),
+              data: bufferPkg.Buffer.concat([
+                bufferPkg.Buffer.from("hello world"),
+                bufferPkg.Buffer.from("hello world"),
               ]), // 22 bytes
-              metadata: Buffer.from("world hello"),
+              metadata: bufferPkg.Buffer.from("world hello"),
             },
             false,
           ]);
           expect(mockHandler.onNext.mock.calls[1]).toMatchObject([
             {
-              data: Buffer.from("hello"),
+              data: bufferPkg.Buffer.from("hello"),
               metadata: null,
             },
             false,
@@ -2217,7 +2217,7 @@ describe("RequestChannelStream Test", () => {
           if (completeOnNext) {
             expect(mockHandler.onNext.mock.calls[2]).toMatchObject([
               {
-                data: Buffer.from("world"),
+                data: bufferPkg.Buffer.from("world"),
                 metadata: null,
               },
               true,
@@ -2256,7 +2256,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
             requestN: 2,
           }
@@ -2271,7 +2271,7 @@ describe("RequestChannelStream Test", () => {
           flags: Flags.NONE,
           streamId: 1,
           extendedType: 1,
-          extendedContent: Buffer.allocUnsafe(0),
+          extendedContent: bufferPkg.Buffer.allocUnsafe(0),
         } as any);
 
         expect(mockStream.frames).toMatchObject([
@@ -2315,7 +2315,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
             requestN: 1,
           }
@@ -2358,7 +2358,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
             requestN: 1,
           }
@@ -2404,7 +2404,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world he"),
+            metadata: bufferPkg.Buffer.from("world he"),
             streamId: 1,
             requestN: 1,
           }
@@ -2447,7 +2447,7 @@ describe("RequestChannelStream Test", () => {
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
             requestN: 1,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
           }
         );
@@ -2459,14 +2459,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2477,7 +2477,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2492,11 +2492,11 @@ describe("RequestChannelStream Test", () => {
         sink.onComplete();
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -2522,7 +2522,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           }
@@ -2535,14 +2535,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2553,7 +2553,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2572,11 +2572,11 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -2603,7 +2603,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           }
@@ -2616,14 +2616,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2634,7 +2634,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2653,11 +2653,11 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -2683,7 +2683,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           }
@@ -2696,14 +2696,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2714,7 +2714,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.COMPLETE,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2728,11 +2728,11 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();
@@ -2760,7 +2760,7 @@ describe("RequestChannelStream Test", () => {
             type: FrameTypes.REQUEST_CHANNEL,
             flags: Flags.FOLLOWS | Flags.METADATA,
             data: undefined,
-            metadata: Buffer.from("world"),
+            metadata: bufferPkg.Buffer.from("world"),
             streamId: 1,
             requestN: 1,
           }
@@ -2773,14 +2773,14 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS | Flags.METADATA,
-          data: Buffer.from("he"),
-          metadata: Buffer.from(" hello"),
+          data: bufferPkg.Buffer.from("he"),
+          metadata: bufferPkg.Buffer.from(" hello"),
           streamId: 1,
         });
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT | Flags.FOLLOWS,
-          data: Buffer.from("llo worldhe"),
+          data: bufferPkg.Buffer.from("llo worldhe"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2791,7 +2791,7 @@ describe("RequestChannelStream Test", () => {
         responder.handle({
           type: FrameTypes.PAYLOAD,
           flags: Flags.NEXT,
-          data: Buffer.from("llo world"),
+          data: bufferPkg.Buffer.from("llo world"),
           metadata: undefined,
           streamId: 1,
         });
@@ -2803,11 +2803,11 @@ describe("RequestChannelStream Test", () => {
         });
         expect(mockStream.frames).toHaveLength(0);
         expect(payload).toMatchObject({
-          data: Buffer.concat([
-            Buffer.from("hello world"),
-            Buffer.from("hello world"),
+          data: bufferPkg.Buffer.concat([
+            bufferPkg.Buffer.from("hello world"),
+            bufferPkg.Buffer.from("hello world"),
           ]), // 22 bytes
-          metadata: Buffer.from("world hello"),
+          metadata: bufferPkg.Buffer.from("world hello"),
         });
 
         expect(mockStream.handler).toBeUndefined();

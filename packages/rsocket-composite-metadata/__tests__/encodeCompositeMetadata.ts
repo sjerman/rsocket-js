@@ -10,7 +10,7 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
       const metadata = new Map();
       metadata.set(
         WellKnownMimeType.MESSAGE_RSOCKET_MIMETYPE,
-        Buffer.from("test")
+        bufferPkg.Buffer.from("test")
       );
 
       const encoded = encodeCompositeMetadata(metadata);
@@ -28,7 +28,7 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
 
     it("handles WellKnownMimeType identifiers as keys", () => {
       const metadata = new Map();
-      metadata.set(122, Buffer.from("test"));
+      metadata.set(122, bufferPkg.Buffer.from("test"));
 
       const encoded = encodeCompositeMetadata(metadata);
 
@@ -45,7 +45,7 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
 
     it("handles custom mimetypes as keys", () => {
       const metadata = new Map();
-      metadata.set("custom", Buffer.from("test"));
+      metadata.set("custom", bufferPkg.Buffer.from("test"));
 
       const encoded = encodeCompositeMetadata(metadata);
 
@@ -64,7 +64,7 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
 
     it("handles mimetype value as function", () => {
       const metadata = new Map();
-      metadata.set("custom", () => Buffer.from("test"));
+      metadata.set("custom", () => bufferPkg.Buffer.from("test"));
 
       const encoded = encodeCompositeMetadata(metadata);
 
@@ -85,7 +85,10 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
   describe("when given a array", () => {
     it("handles WellKnownMimeType instances as keys", () => {
       const encoded = encodeCompositeMetadata([
-        [WellKnownMimeType.MESSAGE_RSOCKET_MIMETYPE, Buffer.from("test")],
+        [
+          WellKnownMimeType.MESSAGE_RSOCKET_MIMETYPE,
+          bufferPkg.Buffer.from("test"),
+        ],
       ]);
 
       // 122 | 128
@@ -100,7 +103,9 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
     });
 
     it("handles WellKnownMimeType identifiers as keys", () => {
-      const encoded = encodeCompositeMetadata([[122, Buffer.from("test")]]);
+      const encoded = encodeCompositeMetadata([
+        [122, bufferPkg.Buffer.from("test")],
+      ]);
 
       // 122 | 128
       const maskedId = encoded.readUInt8(0);
@@ -115,7 +120,7 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
 
     it("handles custom mimetypes as keys", () => {
       const encoded = encodeCompositeMetadata([
-        ["custom", Buffer.from("test")],
+        ["custom", bufferPkg.Buffer.from("test")],
       ]);
 
       const mimeTypeLengthMinusOne = encoded.readUInt8(0);
@@ -133,7 +138,7 @@ describe("encodeCompositeMetadata encodes the metadata", () => {
 
     it("handles mimetype value as function", () => {
       const encoded = encodeCompositeMetadata([
-        ["custom", () => Buffer.from("test")],
+        ["custom", () => bufferPkg.Buffer.from("test")],
       ]);
 
       const mimeTypeLengthMinusOne = encoded.readUInt8(0);

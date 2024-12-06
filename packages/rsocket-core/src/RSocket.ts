@@ -15,13 +15,13 @@
  */
 
 import { Closeable } from "./Common.js";
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 /**
  * A single unit of data exchanged between the peers of a `RSocket`.
  */
 export type Payload = {
-  data: Buffer | null | undefined;
-  metadata?: Buffer;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata?: bufferPkg.Buffer;
 };
 
 export type SetupPayload = {
@@ -30,9 +30,9 @@ export type SetupPayload = {
   keepAliveInterval: number;
   keepAliveMaxLifetime: number;
   flags: number;
-  resumeToken: Buffer | null | undefined;
-  data: Buffer | null | undefined;
-  metadata?: Buffer;
+  resumeToken: bufferPkg.Buffer | null | undefined;
+  data: bufferPkg.Buffer | null | undefined;
+  metadata?: bufferPkg.Buffer;
 };
 
 export interface Cancellable {
@@ -46,7 +46,7 @@ export interface Requestable {
 export interface OnExtensionSubscriber {
   onExtension(
     extendedType: number,
-    content: Buffer | null | undefined,
+    content: bufferPkg.Buffer | null | undefined,
     canBeIgnored: boolean
   ): void;
 }
@@ -124,5 +124,8 @@ export interface RSocket extends Closeable {
    * Metadata-Push interaction model of `ReactiveSocket`. The returned Publisher
    * resolves when the passed `payload` is successfully handled.
    */
-  metadataPush(metadata: Buffer, responderStream: OnTerminalSubscriber): void;
+  metadataPush(
+    metadata: bufferPkg.Buffer,
+    responderStream: OnTerminalSubscriber
+  ): void;
 }

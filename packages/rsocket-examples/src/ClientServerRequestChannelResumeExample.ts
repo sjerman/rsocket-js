@@ -91,7 +91,7 @@ async function main() {
       lifetime: 10000,
     },
     resume: {
-      tokenGenerator: () => Buffer.from("1"),
+      tokenGenerator: () => bufferPkg.Buffer.from("1"),
       reconnectFunction: (a) =>
         new Promise((r) => setTimeout(r, a * 100 + 100, 100)),
     },
@@ -112,7 +112,7 @@ async function main() {
     let interval;
     const requester = rsocket.requestChannel(
       {
-        data: Buffer.from("1"),
+        data: bufferPkg.Buffer.from("1"),
       },
       16,
       false,
@@ -150,7 +150,7 @@ async function main() {
               }
               requester.onNext(
                 {
-                  data: Buffer.from(`${sent}`),
+                  data: bufferPkg.Buffer.from(`${sent}`),
                 },
                 sent === 1000
               );

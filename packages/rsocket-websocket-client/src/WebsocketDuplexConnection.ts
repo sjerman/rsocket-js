@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Buffer } from "buffer";
+import bufferPkg from "buffer";
 
 import {
   Closeable,
@@ -96,7 +96,7 @@ export class WebsocketDuplexConnection
 
   private handleMessage = (message: MessageEvent): void => {
     try {
-      const buffer = Buffer.from(message.data);
+      const buffer = bufferPkg.Buffer.from(message.data);
       const frame = this.deserializer.deserializeFrame(buffer);
 
       this.multiplexerDemultiplexer.handle(frame);

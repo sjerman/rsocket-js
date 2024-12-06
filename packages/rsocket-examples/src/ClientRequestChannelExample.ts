@@ -36,7 +36,7 @@ async function main() {
   await new Promise((resolve, reject) => {
     const requester = rsocket.requestChannel(
       {
-        data: Buffer.from("Hello World"),
+        data: bufferPkg.Buffer.from("Hello World"),
       },
       1,
       false,
@@ -61,7 +61,7 @@ async function main() {
           console.log(`request(${n})`);
           requester.onNext(
             {
-              data: Buffer.from("Message"),
+              data: bufferPkg.Buffer.from("Message"),
             },
             true
           );

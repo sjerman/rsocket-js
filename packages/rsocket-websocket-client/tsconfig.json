@@ -6,7 +6,7 @@
     "rootDir": "./src",
     "types": ["ws"],
     "paths": {
-      "@sjerman/rsocket-core": ["../rsocket-core/dist"]
+      "@sjerman/rsocket-core": ["../rsocket-core/dist/index.js"]
     }
   },
   "include": ["src/**/*"],

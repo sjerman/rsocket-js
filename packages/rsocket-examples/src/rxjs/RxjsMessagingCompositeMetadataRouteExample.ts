@@ -218,12 +218,12 @@ async function requestChannel(rsocket: RSocketRequester, route: string = "") {
 class StringCodec implements Codec<string> {
   readonly mimeType: string = "text/plain";
 
-  decode(buffer: Buffer): string {
+  decode(buffer: bufferPkg.Buffer): string {
     return buffer.toString();
   }
 
-  encode(entity: string): Buffer {
-    return Buffer.from(entity);
+  encode(entity: string): bufferPkg.Buffer {
+    returnbufferPkg.Buffer.from(entity);
   }
 }
 
