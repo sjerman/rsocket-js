@@ -22,6 +22,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies" :{
+    "@sjerman/rsocket-core":"^1.1.4"
+   },
   "scripts": {
     "build": "../../node_modules/.bin/tsc -b",
     "clean": "../../node_modules/.bin/rimraf node_modules dist",
