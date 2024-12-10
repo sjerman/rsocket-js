@@ -34,11 +34,8 @@
     "graphql": "^16.0.0",
     "graphql-subscriptions": "^2.0.0",
     "graphql-tag": "^2.12.6"
-
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@types/react": "^18.3.12",
-    "ts-node": "~10.4.0"
+    "@types/react": "^18.3.12"
   }
 }

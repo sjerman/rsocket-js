@@ -889,29 +889,34 @@
   integrity sha512-DE427ROAphMQzU4ENbliGYrBSYPXF+TtLg9S8vzeA+OF4ZKzoDdzfL8sxuMUGS/lgRhM6j1URSk9ghf7Xo1tyA==
 
 "@sjerman/rsocket-adapter-rxjs@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-adapter-rxjs":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-adapter-rxjs"
   dependencies:
     "@sjerman/rsocket-composite-metadata" "^1.1.4"
     "@sjerman/rsocket-messaging" "^1.1.4"
 
 "@sjerman/rsocket-composite-metadata@^1.1.4", "@sjerman/rsocket-composite-metadata@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-composite-metadata":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-composite-metadata"
+  dependencies:
+    "@sjerman/rsocket-core" "^1.1.4"
+    buffer "^6.0.3"
 
 "@sjerman/rsocket-core@*", "@sjerman/rsocket-core@^1.1.4", "@sjerman/rsocket-core@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-core":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-core"
+  dependencies:
+    buffer "^6.0.3"
 
 "@sjerman/rsocket-graphql-apollo-link@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-graphql-apollo-link":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-graphql-apollo-link"
   dependencies:
     "@apollo/client" "^3.5.10"
     graphql "^16.3.0"
 
 "@sjerman/rsocket-graphql-apollo-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-graphql-apollo-server":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-graphql-apollo-server"
   dependencies:
     "@apollo/client" "^3.5.10"
@@ -922,25 +927,28 @@
     graphql "^16.3.0"
 
 "@sjerman/rsocket-messaging@^1.1.4", "@sjerman/rsocket-messaging@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-messaging":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-messaging"
+  dependencies:
+    "@sjerman/rsocket-core" "*"
 
 "@sjerman/rsocket-tcp-client@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-tcp-client":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-tcp-client"
 
 "@sjerman/rsocket-tcp-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-tcp-server":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-tcp-server"
 
 "@sjerman/rsocket-websocket-client@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-websocket-client":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-websocket-client"
   dependencies:
     "@sjerman/rsocket-core" "^1.1.4"
+    buffer "^6.0.3"
 
 "@sjerman/rsocket-websocket-server@file:/Users/sjerman/Bitbucket/saas/rsocket-js/packages/rsocket-websocket-server":
-  version "1.1.4"
+  version "1.1.5"
   resolved "file:packages/rsocket-websocket-server"
 
 "@tsconfig/node10@^1.0.7":
